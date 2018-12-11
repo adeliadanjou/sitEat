@@ -7,12 +7,6 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-// router.post("/login", passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "/auth/login",
-//   failureFlash: true,
-//   passReqToCallback: true
-// }));
 
 router.post("/login", function(req, res, next) {
   passport.authenticate("local", function(err, user, info) {
@@ -32,15 +26,15 @@ router.post("/login", function(req, res, next) {
 });
 
 router.post("/signup", (req, res, next) => {
-  console.log(req.body)
 
   const username = req.body.username;
   const password = req.body.password;
-  const campus = req.body.campus;
-  const course = req.body.course;
+  const email    = req.body.email;
+  const restaurant = req.body.restaurant;
 
-  if (username === "" || password === "" || campus === "" || course === "") {
-    res.status(400).json({ message: "Provide username and password" });
+
+  if (username === "" || password === "" || email === "") {
+    res.status(400).json({ message: "Provide username, email and password" });
     return;
   }
 
@@ -49,15 +43,16 @@ router.post("/signup", (req, res, next) => {
       res.status(400).json({ message: 'Username taken. Choose another one.'});
       return;
     }
-
+      
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
       username,
       password: hashPass,
-      campus,
-      course,
+      email,
+      restaurant,
+      
     });
 
     newUser.save()
@@ -71,14 +66,10 @@ router.post("/signup", (req, res, next) => {
   
 });
 
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   res.redirect("/");
-// });
 
 router.post('/edit', (req, res, next)=> {
- const {username, campus, course} = req.body;
- User.findByIdAndUpdate(req.user._id, {username, campus, course}, {new: true})
+ const {username, email} = req.body;
+ User.findByIdAndUpdate(req.user._id, {username}, {new: true})
  .then((userUpdated) => {
    res.status(200).json({userUpdated})
  })

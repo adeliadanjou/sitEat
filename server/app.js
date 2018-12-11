@@ -41,24 +41,20 @@ app.use(cors({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(favicon(path.join(__dirname, 'public', 'images')));
 
-// Enable authentication using session + passport
+
 app.use(session({
   secret: 'irongenerator',
   resave: true,
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
-// app.use(flash());
+
 require('./passport')(app);
     
 
 const index = require('./routes/index');
 app.use('/', index);
 
-// const authRoutes = require('./routes/auth');
-// app.use('/auth', authRoutes);
-      
 
 module.exports = app;

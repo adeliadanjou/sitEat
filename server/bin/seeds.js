@@ -22,10 +22,14 @@ let users = [
   {
     username: "alice",
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    email: "alice@gmail.com",
+    restaurant: false,
   },
   {
     username: "bob",
     password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    email: "bob@gmail.com",
+    restaurant: false,
   }
 ]
 
