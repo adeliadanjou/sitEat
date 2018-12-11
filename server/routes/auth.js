@@ -33,7 +33,7 @@ router.post("/signup", (req, res, next) => {
   const restaurant = req.body.restaurant;
 
 
-  if (username === "" || password === "" || email === "") {
+  if (username === "" || password === "") {
     res.status(400).json({ message: "Provide username, email and password" });
     return;
   }
