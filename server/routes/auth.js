@@ -31,7 +31,9 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
   const email    = req.body.email;
   const restaurant = req.body.restaurant;
-
+  const restaurantName = req.body.restaurantName;
+  const address = req.body.address;
+  const zipCode = req.body.zipCode;
 
   if (username === "" || password === "") {
     res.status(400).json({ message: "Provide username, email and password" });
@@ -52,6 +54,9 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       email,
       restaurant,
+      restaurantName,
+      address,
+      zipCode,
       
     });
 

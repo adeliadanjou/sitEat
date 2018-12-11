@@ -5,7 +5,10 @@ const userSchema = new Schema({
   username: String,
   password: String, 
   email: String,
-  restaurant: {type: Boolean, default: false}
+  restaurant: {type: Boolean, default: false},
+  restaurantName: String,
+  address: String,         
+  zipCode: Number,         
 }, {
   timestamps: {
     createdAt: 'created_at',
