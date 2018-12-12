@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
+  username: {type:String, unique: true},
   password: String, 
   email: String,
   restaurant: {type: Boolean, default: false},
   restaurantName: String,
   address: String,         
-  zipCode: Number,         
+  zipCode: Number,
+  lat: String,
+  lng: String,         
 }, {
   timestamps: {
     createdAt: 'created_at',

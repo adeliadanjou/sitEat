@@ -3,6 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -35,7 +36,22 @@ router.post("/signup", (req, res, next) => {
   const address = req.body.address;
   const zipCode = req.body.zipCode;
 
-  if (username === "" || password === "") {
+  const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyBp_NABj80aoBJsjKpHT6q7I1c9lLYB3gk',
+    Promise: Promise
+  });
+
+  googleMapsClient.geocode({address})
+  .asPromise()
+  .then((response) => {
+
+
+    //aqui consigo latitud y longitud:
+    var lat = response.json.results[0].geometry.viewport.northeast.lat;
+    var lng = response.json.results[0].geometry.viewport.northeast.lng;
+    
+   // lo meto dentro de la promesa para que se me guarde:
+   if (username === "" || password === "") {
     res.status(400).json({ message: "Provide username, email and password" });
     return;
   }
@@ -57,6 +73,8 @@ router.post("/signup", (req, res, next) => {
       restaurantName,
       address,
       zipCode,
+      lat,
+      lng
       
     });
 
@@ -68,9 +86,18 @@ router.post("/signup", (req, res, next) => {
       res.status(400).json({ message: 'Saving user to database went wrong.'});
          });
   });
+})
+.catch((err) => {
+  console.log(err);
+});
   
 });
 
+
+
+
+
+  
 
 router.post('/edit', (req, res, next)=> {
  const {username, email} = req.body;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../auth/AuthService';
 import { Link, Redirect } from 'react-router-dom'; 
+import Map from './Map';
 
 
 class Signup extends Component {
@@ -67,7 +68,7 @@ class Signup extends Component {
 
           <label>Zip Code:</label>
           <input name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
-          
+          {<Map/>}
          </div>
          ) 
      
@@ -89,6 +90,7 @@ class Signup extends Component {
           <input type="checkbox" name="restaurant" value={this.state.restaurant} onChange={ e => this.handleChange(e)}/> 
           <label>Soy un restaurante</label>
         {justForRestaurants}
+      
           <input type="submit" value="Signup" />
         </form>
   

@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+.mapFather > div {
+height: 50% !important;
+width: 50% !important;
+
+}
