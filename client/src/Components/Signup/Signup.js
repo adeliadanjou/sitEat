@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import AuthService from '../auth/AuthService';
+import AuthService from '../../auth/AuthService';
 import { Link, Redirect } from 'react-router-dom'; 
-import Map from './Map';
+
 
 
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '', restaurantName: '', address: '', zipCode: '', redirect: false};
+    this.state = { username: '', password: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
     this.service = new AuthService();
   }
 
@@ -20,9 +20,10 @@ class Signup extends Component {
     const restaurantName   = this.state.restaurantName;
     const address          = this.state.address;
     const zipCode          = this.state.zipCode;
+    const lat              = this.state.lat;
+    const lng              = this.state.lng;
 
-
-    this.service.signup(username, password, email, restaurant, restaurantName, address, zipCode)
+    this.service.signup(username, password, email, restaurant, restaurantName, address, zipCode, lat, lng)
     .then( response => {
         this.setState({
             ...this.state,
@@ -33,6 +34,8 @@ class Signup extends Component {
             restaurantName: "",
             address: "",
             zipCode: "",
+            lat: "",
+            lng: "",
 
             redirect: true
         });
@@ -68,7 +71,7 @@ class Signup extends Component {
 
           <label>Zip Code:</label>
           <input name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
-          {<Map/>}
+         
          </div>
          ) 
      
