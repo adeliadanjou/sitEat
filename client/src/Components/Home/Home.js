@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import React, { Component } from 'react'
-
+import AuthService from '../../auth/AuthService';
 
  
 class Home extends Component {
-
+  constructor(props){
+    super(props)
+    this.state = { loggedInUser: null };
+    this.service = new AuthService();
+   
+  }
   render () {
-      console.log(this.props.username)
+      
     return (
       <div>
         <h1>Welcome Home {this.props.username}</h1>

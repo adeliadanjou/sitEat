@@ -14,6 +14,11 @@ class AuthService {
     .then(response => response.data)
   }
 
+  edit = (username, email, restaurant, restaurantName, address, zipCode) => {
+    return this.service.post('/edit', {username, email, restaurant, restaurantName, address, zipCode })
+    .then(response => response.data)
+  }
+
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => response.data)
@@ -25,7 +30,7 @@ class AuthService {
   }
   
   logout = () => {
-    return this.service.post('/logout', {})
+    return this.service.get('/logout')
     .then(response => response.data)
   }
 // me hago el servicio de todos los restaurantes con su ruta modo react para llamarla luego en componente

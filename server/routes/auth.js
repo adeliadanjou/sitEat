@@ -117,22 +117,27 @@ router.post("/signup", (req, res, next) => {
         });
     }
   })
-
-
 });
-
-
-
-
-
-
 
 router.post('/edit', (req, res, next) => {
   const {
-    username
+    username,
+    email,
+    restaurantName, 
+    address,
+    zipCode,
+    lat,
+    lng
   } = req.body;
+
   User.findByIdAndUpdate(req.user._id, {
-      username
+      username,
+      email,
+      restaurantName, 
+      address,
+      zipCode,
+      lat,
+      lng
     }, {
       new: true
     })
@@ -142,7 +147,7 @@ router.post('/edit', (req, res, next) => {
       })
     })
     .catch((err) => {
-      console.log(err)
+      console.log('error al actualizar usuario')
     })
 })
 

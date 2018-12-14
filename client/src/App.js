@@ -6,6 +6,7 @@ import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import Profile from './Components/Profile/Profile';
 import AuthService from './auth/AuthService';
+import Edit from './Components/Edit/Edit';
 
 class App extends Component {
   constructor(props){
@@ -29,11 +30,11 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Home}/>
+          <Route exact path='/' component={Home} getUser={this.getTheUser}/>
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
-          <Route exact path='/profile' render={() => <Profile user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
-
+          <Route exact path='/profile' render={() => <Profile user={this.state.loggedInUser} getTheUser={this.getTheUser}/>}/>
+          <Route exact path='/edit' render={() => <Edit getUser={this.getTheUser}/>}/>
         </Switch>
       </div>
     );

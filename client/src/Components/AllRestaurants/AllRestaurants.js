@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AuthService from '../../auth/AuthService';
-
+import { Link } from 'react-router-dom'; 
 
 
 export default class AllRestaurants extends Component {
@@ -33,7 +33,8 @@ export default class AllRestaurants extends Component {
    });
    console.log(filteredRestaurants)
    var RestaurantName = (filteredRestaurants.map((restaurant)=>{
-     return (restaurant.restaurantName)
+     return <Link to={`${restaurant._id}`}><div><ul><li>{restaurant.restaurantName}</li></ul>
+       </div></Link>
    }))
  }
 
