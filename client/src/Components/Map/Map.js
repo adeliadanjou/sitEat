@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import '../App.css';
+
 
 
 class Maps extends Component {
-  constructor(props){
-    super(props)
-    this.state = { restaurantName: '', address: '', lat: '', lng: '', redirect: false};
-  }
   
   render() {
     const style = {
@@ -15,16 +11,14 @@ class Maps extends Component {
       height: '100%'
     }
 
-    
-    
     return (
       <div className="mapFather">
        
         <Map google={this.props.google} 
          style={style}
-        initialCenter={{
-          lat: 40.392532,
-          lng: -3.698267
+        Center={{
+          lat: this.props.lat,
+          lng: this.props.lng,
         }}
         zoom={15}
         onClick={this.mapClicked}>

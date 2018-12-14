@@ -175,14 +175,14 @@ router.get("/myRestaurant", () => {
   } = req.body;
 })
 
-// router.get('/allRestaurants', (req, res, next) => {
-//   Restaurant.find()
-//     .then(restaurant => {
-//       res.status(200).json("restaurant", { restaurant });
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// })
+router.get('/allRestaurants', (req, res, next) => {
+  User.find({restaurant: true})
+    .then(restaurant => {
+      res.status(200).json({ restaurant });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+})
 
 module.exports = router;

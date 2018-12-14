@@ -28,11 +28,11 @@ class AuthService {
     return this.service.post('/logout', {})
     .then(response => response.data)
   }
-
-
-
-
-
+// me hago el servicio de todos los restaurantes con su ruta modo react para llamarla luego en componente
+  allRestaurants = () => {
+    return this.service.get('/allRestaurants', {})
+    .then(response => response.data)
+  }
 
 }
 
