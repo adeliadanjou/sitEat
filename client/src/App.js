@@ -26,6 +26,8 @@ class App extends Component {
       loggedInUser: userObj
     })
   }
+// user={this.state.loggedInUser} --> esto es para pasar a las rutas el usuario ya cargado ok? con el props
+
   render() {
     return (
       <div className="App">
@@ -34,7 +36,7 @@ class App extends Component {
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/profile' render={() => <Profile user={this.state.loggedInUser} getTheUser={this.getTheUser}/>}/>
-          <Route exact path='/edit' render={() => <Edit getUser={this.getTheUser}/>}/>
+          <Route exact path='/edit' render={() => <Edit user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
         </Switch>
       </div>
     );

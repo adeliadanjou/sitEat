@@ -6,9 +6,10 @@ import { Link, Redirect } from 'react-router-dom';
 class Edit extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
+    this.state = { user:props.user, username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
     this.service = new AuthService();
     this.service.loggedin()
+    
   }
 
   handleFormSubmit = (event) => {
@@ -55,10 +56,12 @@ class Edit extends Component {
   }
 
   render(){
+    console.log(this.props.user)
     if(this.state && this.state.redirect) {
       return <Redirect to="/profile" />  
     }
-    if(this.state.restaurant === true){
+    if(this.props.user){
+    if(this.props.user.restaurant === true){
          var justForRestaurants =(
          <div>
           <label>Restaurant Name:</label>
@@ -72,8 +75,8 @@ class Edit extends Component {
          
          </div>
          ) 
-     
-    }
+    }}
+
     return(
       <div>
 
@@ -83,9 +86,7 @@ class Edit extends Component {
 
           <label>Email:</label>
           <input name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
-          
-
-          
+  
         {justForRestaurants}
       
           <input type="submit" value="Edit" />
