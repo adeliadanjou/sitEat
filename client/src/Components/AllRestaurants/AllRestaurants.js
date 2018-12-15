@@ -23,7 +23,7 @@ export default class AllRestaurants extends Component {
 
 
   render(){
-    console.log(this.state.search)
+    
 
  if(this.state.allRestaurantsHere){
    let filteredRestaurants= this.state.allRestaurantsHere.restaurant.filter((restaurant)=>{
@@ -31,9 +31,9 @@ export default class AllRestaurants extends Component {
     //  esto pa que no se muestren todos, solo lo que buscas --> && this.state.search !== ""
    
    });
-   console.log(filteredRestaurants)
+   
    var RestaurantName = (filteredRestaurants.map((restaurant)=>{
-     return <Link to={`${restaurant._id}`}><div><ul><li>{restaurant.restaurantName}</li></ul>
+     return <Link to={`Restaurant/${restaurant._id}`}><div><ul><li>{restaurant.restaurantName}</li></ul>
        </div></Link>
    }))
  }

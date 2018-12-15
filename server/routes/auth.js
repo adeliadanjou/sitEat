@@ -82,8 +82,8 @@ router.post("/signup", (req, res, next) => {
         .then((response) => {
 
           //aqui consigo latitud y longitud:
-          var lat = response.json.results[0].geometry.viewport.northeast.lat;
-          var lng = response.json.results[0].geometry.viewport.northeast.lng;
+          var lat = response.json.results[0].geometry.viewport.getNorthEast();
+          var lng = response.json.results[0].geometry.viewport.getSouthWest();
 
           newUser.restaurantName = restaurantName;
           newUser.address = address;
@@ -120,6 +120,9 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post('/edit', (req, res, next) => {
+  const myUser ={};
+
+
   const {
     username,
     email,
@@ -129,18 +132,41 @@ router.post('/edit', (req, res, next) => {
     lat,
     lng
   } = req.body;
+  
+  if (username !== ""){
+    myUser.username = username; 
+  }
 
-  User.findByIdAndUpdate(req.user._id, {
-      username,
-      email,
-      restaurantName, 
-      address,
-      zipCode,
-      lat,
-      lng
-    }, {
+  if (email !== ""){
+    myUser.email = email; 
+  }
+
+  if (restaurantName !== ""){
+    myUser.restaurantName = restaurantName; 
+  }
+
+  if (address !== ""){
+    myUser.address = address; 
+  }
+
+  if (zipCode !== ""){
+    myUser.zipCode = zipCode; 
+  }
+
+  if (lat !== ""){
+    myUser.lat = lat; 
+  }
+
+  if (lng !== ""){
+    myUser.lng = lng; 
+  }
+
+
+
+  User.findByIdAndUpdate(req.user._id, myUser, {
       new: true
     })
+
     .then((userUpdated) => {
       res.status(200).json({
         userUpdated

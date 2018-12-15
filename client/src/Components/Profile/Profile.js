@@ -4,6 +4,7 @@ import AuthService from '../../auth/AuthService';
 import Map from '../Map/Map';
 import AllRestaurants from '../AllRestaurants/AllRestaurants';
 import { Redirect} from 'react-router-dom';
+import './Profile.css';
 
 
 export default class Profile extends Component {
@@ -50,7 +51,7 @@ export default class Profile extends Component {
       var restaurantProfile =(
       <div>
          AQUI VA EL PERFIL QUE SOLO PUEDEN VER LOS RESTAURANTES
-         <Link to={`/myRestaurant/`}><button>My Restaurant</button></Link>
+         <Link to={`Restaurant/${this.props.user._id}`}><button>My Restaurant</button></Link>
          {<Map lat={this.props.user.lat} lng={this.props.user.lng}/>}
       </div>
       ) 
@@ -68,19 +69,19 @@ export default class Profile extends Component {
     } 
     
     return (
-      
-      <div>
+      this.props.user ? (<div>
         <h2>Hola  {username} este es tu perfil!!!!</h2>
         <br/>
   
-        <Link to={`/edit/`}><button>Edit my Profile</button></Link>
+        <Link to={`edit/${this.props.user._id}`}><button>Edit my Profile</button></Link>
        
         <Link to={'/'}><button onClick={this.logout}>Log Out</button></Link>
         
         {restaurantProfile}
         {userProfile}
 
-      </div>
+      </div>): "Loading..."
+      
     )
   }
 }

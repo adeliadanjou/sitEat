@@ -4,9 +4,9 @@ import { Link, Redirect } from 'react-router-dom';
 
 
 class Edit extends Component {
-  constructor(props){
-    super(props);
-    this.state = { user:props.user, username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
+  constructor(){
+    super();
+    this.state = { username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
     this.service = new AuthService();
     this.service.loggedin()
     
@@ -14,6 +14,7 @@ class Edit extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
+    
     const username         = this.state.username;
     const email            = this.state.email;
     const restaurant       = this.state.restaurant;
@@ -22,6 +23,7 @@ class Edit extends Component {
     const zipCode          = this.state.zipCode;
     const lat              = this.state.lat;
     const lng              = this.state.lng;
+
 
     this.service.edit(username, email, restaurant, restaurantName, address, zipCode, lat, lng)
     .then( response => {
@@ -50,7 +52,7 @@ class Edit extends Component {
      this.setState({[name]: event.target.checked});
     }
     else{
-      this.setState({[name]: value});
+      this.setState({[name]:value});
     }
 
   }
