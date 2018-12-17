@@ -25,7 +25,7 @@ export default class AllRestaurants extends Component {
   render(){
     
 
- if(this.state.allRestaurantsHere){
+ if(this.state.allRestaurantsHere && this.state.allRestaurantsHere.restaurant){
    let filteredRestaurants= this.state.allRestaurantsHere.restaurant.filter((restaurant)=>{
      return restaurant.restaurantName.toLowerCase().includes(this.state.search) 
     //  esto pa que no se muestren todos, solo lo que buscas --> && this.state.search !== ""
