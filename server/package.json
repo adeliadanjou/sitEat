@@ -12,8 +12,7 @@
     "@google/maps": "^0.5.5",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
-    "build-dev": "dotenv -e .env.development react-scripts build",
-    "build-prod": "dotenv -e .env.production react-scripts build",
+   
     "connect-ensure-login": "^0.1.1",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
