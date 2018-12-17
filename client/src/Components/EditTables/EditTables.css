@@ -1,0 +1,25 @@
+table,
+td,
+tr {
+    border: 1px solid black;
+}
+td {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    transition: all 1.5s;
+}
+#planogram td {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+fieldset {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    background: white;
+}
+#tablePositionsDescriptor label {
+    display: block;
+}

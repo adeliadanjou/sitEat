@@ -5,7 +5,7 @@ const tableSchema = new Schema({
   restauranteId: {type: Schema.Types.ObjectId, ref: 'User'},
   mesa: {type:String, unique: true},
   chairs: Number, 
-  available: {type: Boolean, default: true},
+  isAvailable: {type: Boolean, default: true},
   
 }, {
   timestamps: {

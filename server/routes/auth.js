@@ -31,7 +31,8 @@ router.post("/login", function (req, res, next) {
 });
 
 router.post("/signup", (req, res, next) => {
-
+  
+  //todo: consider using destructuring operator
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
@@ -53,9 +54,13 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
+  //todo: check password strength
+
   User.findOne({
     username
   }, "username", (err, user) => {
+    console.log("User:", user);
+
     if (user !== null) {
       res.status(400).json({
         message: 'Username taken. Choose another one.'
@@ -73,17 +78,26 @@ router.post("/signup", (req, res, next) => {
       email
     })
 
+    //todo: consider refactor restaurant naming for better code understanding. Proposal: hasRestaurant
     if (restaurant) {
+      
+      ////
+      
 
+      ////
+
+      //todo: very important! please ensure what happens if the geocoder cannot locate the provided address
+      //todo: consider using https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
       googleMapsClient.geocode({
           address
         })
         .asPromise()
         .then((response) => {
+          
 
           //aqui consigo latitud y longitud:
-          var lat = response.json.results[0].geometry.viewport.getNorthEast();
-          var lng = response.json.results[0].geometry.viewport.getSouthWest();
+          var lat = response.json.results[0].geometry.viewport.northeast.lat;
+          var lng = response.json.results[0].geometry.viewport.northeast.lng;
 
           newUser.restaurantName = restaurantName;
           newUser.address = address;

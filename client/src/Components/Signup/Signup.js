@@ -52,7 +52,6 @@ class Signup extends Component {
     else{
       this.setState({[name]: value});
     }
-
   }
 
   render(){
@@ -60,17 +59,21 @@ class Signup extends Component {
       return <Redirect to="/" />
     }
     if(this.state.restaurant === true){
+     
          var justForRestaurants =(
          <div>
           <label>Restaurant Name:</label>
           <input name="restaurantName" value={this.state.restaurantName} onChange={ e => this.handleChange(e)} />
-
+     
           <label>Address:</label>
-          <input name="address" value={this.state.address} onChange={ e => this.handleChange(e)} />
-
+          
+          <input name="address" id="pac-input" class="controls" value={this.state.address} onChange={ e => this.handleChange(e)} />
           <label>Zip Code:</label>
           <input name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
-         
+          <div id="map" height="100%"></div>
+          
+          
+
          </div>
          ) 
      
@@ -99,11 +102,10 @@ class Signup extends Component {
         <p>Already have account? 
             <Link to={"/login"}> Login</Link>
         </p>
-  
+       
       </div>
     )
   }
-  
 }
 
 export default Signup;
