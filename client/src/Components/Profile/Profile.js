@@ -80,7 +80,7 @@ export default class Profile extends Component {
         {restaurantProfile}
         {userProfile}
 
-      </div>): "Loading..."
+      </div>): (<p>"Loading..."</p>)
       
     )
   }

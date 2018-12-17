@@ -31,10 +31,12 @@ class App extends Component {
 
   render() {
   if(this.state.loggedInUser){
-    console.log(this.state._id)
+    
   }
     return (
       <div className="App">
+
+      
         <Switch>
           <Route exact path='/' component={Home} getUser={this.getTheUser}/>
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>

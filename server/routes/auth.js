@@ -162,7 +162,6 @@ router.post('/edit', (req, res, next) => {
   }
 
 
-
   User.findByIdAndUpdate(req.user._id, myUser, {
       new: true
     })
@@ -215,5 +214,50 @@ router.get('/allRestaurants', (req, res, next) => {
       console.log(error)
     })
 })
+
+//restaurantes crean mesas:
+// router.post("/Restaurant/:id", uploadCload.single("photo"), (req, res, next) => {
+//   const { username, password } = req.body;
+//   const pictureUrl = req.file.url;
+
+  
+//   if (username === "" || password === "") {
+//     res.status(500).json({ message: "Indicate username and password" });
+//     return;
+//   }
+
+//   User.findOne({ username }, "username", (err, user) => {
+//     if (user !== null) {
+//       res.status(500).json({ message: "The username already exists" })
+//       return;
+//     }
+
+//     const salt = bcrypt.genSaltSync(bcryptSalt);
+//     const hashPass = bcrypt.hashSync(password, salt);
+
+//     const newUser = new User({
+//       username,
+//       password: hashPass,
+//       pictureUrl
+//     });
+
+//     newUser.save((err, user) => {
+//       if (err) {
+//         res.status(500).json({ message: "Something went wrong" });
+//       } else {
+//         req.login(user, (err) => {
+
+//           if (err) {
+//               res.status(500).json({ message: 'Login after signup went bad.' });
+//               return;
+//           }
+
+//           res.status(200).json(user);
+//       });
+//       }
+//     });
+//   });
+// });
+
 
 module.exports = router;
