@@ -40,6 +40,7 @@ router.post("/signup", (req, res, next) => {
   const restaurantName = req.body.restaurantName;
   const address = req.body.address;
   const zipCode = req.body.zipCode;
+  const tables = req.body.tables;
 
   const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyBp_NABj80aoBJsjKpHT6q7I1c9lLYB3gk',
@@ -75,16 +76,12 @@ router.post("/signup", (req, res, next) => {
       username,
       password: hashPass,
       restaurant,
-      email
+      email,
+
     })
 
-    //todo: consider refactor restaurant naming for better code understanding. Proposal: hasRestaurant
+    
     if (restaurant) {
-      
-      ////
-      
-
-      ////
 
       //todo: very important! please ensure what happens if the geocoder cannot locate the provided address
       //todo: consider using https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
@@ -104,6 +101,7 @@ router.post("/signup", (req, res, next) => {
           newUser.zipCode = zipCode;
           newUser.lat = lat;
           newUser.lng = lng;
+          newUser.tables = [];
 
           newUser.save()
             .then(user => {
@@ -136,7 +134,6 @@ router.post("/signup", (req, res, next) => {
 router.post('/edit', (req, res, next) => {
   const myUser ={};
 
-
   const {
     username,
     email,
@@ -144,7 +141,8 @@ router.post('/edit', (req, res, next) => {
     address,
     zipCode,
     lat,
-    lng
+    lng,
+    
   } = req.body;
   
   if (username !== ""){
@@ -228,50 +226,6 @@ router.get('/allRestaurants', (req, res, next) => {
       console.log(error)
     })
 })
-
-//restaurantes crean mesas:
-// router.post("/Restaurant/:id", uploadCload.single("photo"), (req, res, next) => {
-//   const { username, password } = req.body;
-//   const pictureUrl = req.file.url;
-
-  
-//   if (username === "" || password === "") {
-//     res.status(500).json({ message: "Indicate username and password" });
-//     return;
-//   }
-
-//   User.findOne({ username }, "username", (err, user) => {
-//     if (user !== null) {
-//       res.status(500).json({ message: "The username already exists" })
-//       return;
-//     }
-
-//     const salt = bcrypt.genSaltSync(bcryptSalt);
-//     const hashPass = bcrypt.hashSync(password, salt);
-
-//     const newUser = new User({
-//       username,
-//       password: hashPass,
-//       pictureUrl
-//     });
-
-//     newUser.save((err, user) => {
-//       if (err) {
-//         res.status(500).json({ message: "Something went wrong" });
-//       } else {
-//         req.login(user, (err) => {
-
-//           if (err) {
-//               res.status(500).json({ message: 'Login after signup went bad.' });
-//               return;
-//           }
-
-//           res.status(200).json(user);
-//       });
-//       }
-//     });
-//   });
-// });
 
 
 module.exports = router;

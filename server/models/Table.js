@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const tableSchema = new Schema({
-  restauranteId: {type: Schema.Types.ObjectId, ref: 'User'},
+
   mesa: {type:String, unique: true},
   chairs: Number, 
   isAvailable: {type: Boolean, default: true},

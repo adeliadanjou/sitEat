@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: String, 
   email: String,
   restaurant: {type: Boolean, default: false},
+  tables: [{type: Schema.Types.ObjectId, ref: 'Table'}],
   restaurantName: String,
   address: String,         
   zipCode: Number,

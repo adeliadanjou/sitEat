@@ -44,8 +44,8 @@ class App extends Component {
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/profile' render={() => <Profile user={this.state.loggedInUser} getTheUser={this.getTheUser}/>}/>
           <Route exact path='/edit/:restaurantId' render={() => <Edit user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
-          <Route exact path='/restaurant/:restaurantId' render={() => <Restaurant user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
-          <Route exact path='/editTables' render={() => <EditTables user={this.state.loggedInUser} getTheUser={this.getTheUser}/>}/>
+          <Route exact path='/restaurant/:restaurantId' render={() => <EditTables user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
+
         </Switch>
       </div>
     );

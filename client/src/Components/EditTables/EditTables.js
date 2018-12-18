@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./EditTables.css";
-
+import { Link } from "react-router-dom";
 
 export default class EditTables extends Component {
   constructor(props) {
@@ -8,6 +8,7 @@ export default class EditTables extends Component {
     this.state = { valueRow: undefined,valueCol: undefined, arrayRows: [] };
   }
 
+   
   //le paso el isColoRow y lo comparo con el r y el c que le puse antes:
   handleChange = (event,isColoRow) => {
   const { value } = event.target;
@@ -46,9 +47,9 @@ export default class EditTables extends Component {
       this.setState({...this.state, arrayRows: newArray})  
     
   } 
-  
+
   render() {
-   
+  
     return (
       <div>
         <h1>AQUI LOS RESTAURANTES EDITAN SUS MESAS</h1>
@@ -81,11 +82,20 @@ export default class EditTables extends Component {
 
           <table id="planogram">
             <tbody>
-              {this.state.arrayRows.map((row, rowIndex) => {
 
+              {/* 1)mapeame el array de array llamado arrayRows y le paso valor+index  */}
+              {this.state.arrayRows.map((row, rowIndex) => {
+                // 2) return un tr con este index por cada index del array
                return (<tr key={rowIndex}>
+
+               {/* 3) haz un segundo map de cada array dentro del array grande
+                y paso valor+index para que cada uno tenga index. */}
+
+
                 {row.map((col, colIndex) => {
-                 return (<td key={colIndex} onClick={() => this.clickedOnACell(rowIndex, colIndex)}></td>)
+                  //return tds con el index del array
+                 return (<td key={colIndex} onClick={() => this.clickedOnACell(rowIndex, colIndex)}>
+                 <Link to={`Restaurant/${this.props.user._id}/${rowIndex}${colIndex}`}><button>My Restaurant</button></Link></td>)
                     
                 })}
                </tr>)
