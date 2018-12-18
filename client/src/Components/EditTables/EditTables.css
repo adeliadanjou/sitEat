@@ -3,6 +3,13 @@ td,
 tr {
     border: 1px solid black;
 }
+
+.img {
+    background-image: url("table.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 40px;
+}
 td {
     width: 100px;
     height: 100px;

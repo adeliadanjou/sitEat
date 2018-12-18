@@ -40,7 +40,7 @@ router.post("/signup", (req, res, next) => {
   const restaurantName = req.body.restaurantName;
   const address = req.body.address;
   const zipCode = req.body.zipCode;
-  const tables = req.body.tables;
+  const tables = [];
 
   const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyBp_NABj80aoBJsjKpHT6q7I1c9lLYB3gk',
@@ -101,7 +101,7 @@ router.post("/signup", (req, res, next) => {
           newUser.zipCode = zipCode;
           newUser.lat = lat;
           newUser.lng = lng;
-          newUser.tables = [];
+          newUser.tables = tables;
 
           newUser.save()
             .then(user => {

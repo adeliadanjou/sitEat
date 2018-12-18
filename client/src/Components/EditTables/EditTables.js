@@ -95,7 +95,7 @@ export default class EditTables extends Component {
                 {row.map((col, colIndex) => {
                   //return tds con el index del array
                  return (<td key={colIndex} onClick={() => this.clickedOnACell(rowIndex, colIndex)}>
-                 <Link to={`Restaurant/${this.props.user._id}/${rowIndex}${colIndex}`}><button>My Restaurant</button></Link></td>)
+                 <Link to={`Restaurant/${this.props.user._id}/${rowIndex}${colIndex}`}><button className="img"></button></Link></td>)
                     
                 })}
                </tr>)
