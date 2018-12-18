@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./EditTables.css";
 
+
 export default class EditTables extends Component {
   constructor(props) {
     super(props);
@@ -9,27 +10,40 @@ export default class EditTables extends Component {
   handleChange = event => {
     const { value } = event.target;
     this.setState({ ...this.state, value: value });
-    console.log(value);
     //aqui arriba ya tengo el valor del input range
   };
 
   handleSubmit = (e) => {
-    console.log(this.state.value);
 
-    let arrayRows = []
-
-    for (var i = 0 ; i <this.state.value; i++){
-      arrayRows.push(i)
-    }
+      let arrayRows = [];
+        for (var rows = 0; rows < this.state.value; rows++){
+          arrayRows[rows] = []
+        
+          for (var columns = 0; columns < 5; columns++){
+                arrayRows[rows][columns] = false
+            }
+        }
 
     this.setState({...this.state, arrayRows: arrayRows})
   }
 
-  clickedOnACell() {
-    console.log("You have clicked on me!!!")
-  }
+  clickedOnACell = (rowIndex, colIndex)=> {
+    
+      let newArray = [...this.state.arrayRows]
+      newArray[rowIndex][colIndex] =  !newArray[rowIndex][colIndex];
 
+      this.setState({...this.state, arrayRows: newArray})
+  
+    
+    
+  } 
+
+   
+
+  
+  
   render() {
+   
     return (
       <div>
         <h1>AQUI LOS RESTAURANTES EDITAN SUS MESAS</h1>
@@ -50,16 +64,14 @@ export default class EditTables extends Component {
 
           <table id="planogram">
             <tbody>
-              {this.state.arrayRows.map((val, idx) => {
-                return (
-                  <tr key={idx}>
-                    <td onClick={this.clickedOnACell}></td>
-                    <td onClick={this.clickedOnACell}></td>
-                    <td onClick={this.clickedOnACell}></td>
-                    <td onClick={this.clickedOnACell}></td>
-                    <td onClick={this.clickedOnACell}></td>
-                  </tr>
-                );
+              {this.state.arrayRows.map((row, rowIndex) => {
+
+               return (<tr key={rowIndex}>
+                {row.map((col, colIndex) => {
+                 return (<td key={colIndex} onClick={() => this.clickedOnACell(rowIndex, colIndex)}></td>)
+                    
+                })}
+               </tr>)
               })}
             </tbody>
           </table>
