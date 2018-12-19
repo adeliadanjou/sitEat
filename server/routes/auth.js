@@ -92,7 +92,6 @@ router.post("/signup", (req, res, next) => {
         })
         .asPromise()
         .then((response) => {
-          
 
           //aqui consigo latitud y longitud:
           var lat = response.json.results[0].geometry.viewport.northeast.lat;
@@ -105,11 +104,15 @@ router.post("/signup", (req, res, next) => {
           newUser.lng = lng;
           newUser.tables = tables;
 
+          // console.log("newUser")
+          // console.log(newUser)
+
           newUser.save()
             .then(user => {
               res.status(200).json(user);
             })
             .catch(err => {
+              console.log(err)
               res.status(400).json({
                 message: 'Saving user to database went wrong.'
               });

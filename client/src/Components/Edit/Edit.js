@@ -1,117 +1,94 @@
 import React, { Component } from 'react';
 import AuthService from '../../auth/AuthService';
-import { Redirect } from 'react-router-dom'; 
+import { Redirect, Link } from 'react-router-dom';
 
 
 class Edit extends Component {
-  constructor(){
-    super();
-    this.state = { username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
-    // this.service = new AuthService();
-    // this.service.loggedin()
-    
+  constructor(props) {
+    super(props);
+    this.authService = new AuthService();
+    this.state = {...props, redirect: false}
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    
-    const username         = this.state.username;
-    const email            = this.state.email;
-    const restaurant       = this.state.restaurant;
-    const restaurantName   = this.state.restaurantName;
-    const address          = this.state.address;
-    const zipCode          = this.state.zipCode;
-    const lat              = this.state.lat;
-    const lng              = this.state.lng;
 
+    const username = this.state.user.username;
+    const email = this.state.user.email;
+    const restaurant = this.state.user.restaurant;
+    const restaurantName = this.state.user.restaurantName;
+    const address = this.state.user.address;
+    const zipCode = this.state.user.zipCode;
+    const lat = this.state.user.lat;
+    const lng = this.state.user.lng;
 
-    this.service.edit(username, email, restaurant, restaurantName, address, zipCode, lat, lng)
-    .then( response => {
+    this.authService.edit(username, email, restaurant, restaurantName, address, zipCode, lat, lng)
+      .then(response => {
         this.setState({
-            ...this.state,
-            username: "", 
-            email: "",
-            restaurant: false,
-            restaurantName: "",
-            address: "",
-            zipCode: "",
-            lat: "",
-            lng: "",
-
-            redirect: true
+          ...this.state
         });
-        this.props.getUser(response)
-
-    })
-    .catch( error => console.log(error) )
+      })
+      .catch(error => console.log(error))
   }
 
-  componentWillReceiveProps = () => {
-    debugger
-    console.log("hola")
-    console.log(this.props)
+  handleChange(event){
+    const { name, value } = event.target;
 
-    if (this.props.user !== null) {
-      console.log("entra!!!!")
-      console.log(this.props.user)
+    if (name === "restaurant") {
+      this.setState({ ...this.state, [name]: event.target.checked });
+    }
+    else {
+      this.setState({...this.state, user : {
+        ...this.state.user,
+        [name]: value
+      }}, () => {
+        console.log(this.state)
+      });
     }
   }
-  
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    if(name === "restaurant"){
-     this.setState({[name]: event.target.checked});
-    }
-    else{
-      this.setState({[name]:value});
+
+  render() {
+    if (this.state === null)  return null;
+
+    if (this.state && this.state.redirect) {
+      return <Redirect to="/profile" />
     }
 
-  }
-
-  render(){
-    
-    if(this.state && this.state.redirect) {
-      return <Redirect to="/profile" />  
-    }
-
-    debugger
-    if(this.props.user && this.props.user.restaurant){
-         var justForRestaurants =(
-         <div>
+    if (this.state.user && this.state.user.restaurant) {
+      var justForRestaurants = (
+        <div>
           <label>Restaurant Name:</label>
-          <input name="restaurantName" value={this.props.user.restaurantName} onChange={ e => this.handleChange(e)} />
+          <input name="restaurantName" value={this.state.user.restaurantName} onChange={e => this.handleChange(e)} />
 
           <label>Address:</label>
-          <input name="address" value={this.props.user.address} onChange={ e => this.handleChange(e)} />
+          <input name="address" value={this.state.user.address} onChange={e => this.handleChange(e)} />
 
           <label>Zip Code:</label>
-          <input name="zipCode" value={this.props.user.zipCode} onChange={ e => this.handleChange(e)} />
-         
-         </div>
-         ) 
+          <input name="zipCode" value={this.state.user.zipCode} pattern="[0-9]*" maxLength="5" onChange={e => this.handleChange(e)} />
+
+        </div>
+      )
     }
 
-    return(
+    return (
       <div>
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={e => this.handleFormSubmit(e)}>
           <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          <input type="text" name="username" value={this.state.user.username} onChange={e => this.handleChange(e)} />
 
           <label>Email:</label>
-          <input name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
-  
+          <input name="email" value={this.state.user.email} onChange={e => this.handleChange(e)} />
+
           {justForRestaurants}
-      
+
           <input type="submit" value="Edit" />
+          <Link to="/profile">Profile</Link>
         </form>
-  
-      
-  
       </div>
     )
   }
-  
+
 }
 
 export default Edit;

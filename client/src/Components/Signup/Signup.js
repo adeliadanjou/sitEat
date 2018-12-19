@@ -24,6 +24,8 @@ class Signup extends Component {
 
     this.service.signup(username, password, email, restaurant, restaurantName, address, zipCode, lat, lng)
     .then( response => {
+        debugger
+        
         this.setState({
             ...this.state,
             username: "", 
@@ -69,7 +71,7 @@ class Signup extends Component {
           
           <input name="address" id="pac-input" class="controls" value={this.state.address} onChange={ e => this.handleChange(e)} />
           <label>Zip Code:</label>
-          <input name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
+          <input name="zipCode" value={this.state.zipCode} placeholder="12345" maxLength="5" pattern="[0-9]*" onChange={ e => this.handleChange(e)} />
           <div id="map" height="100%"></div>
           
           
