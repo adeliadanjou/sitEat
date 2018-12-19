@@ -8,7 +8,7 @@ import Profile from './Components/Profile/Profile';
 import AuthService from './auth/AuthService';
 import Edit from './Components/Edit/Edit';
 import Layout from './Layout';
-import EditTables from './Components/EditTables/EditTables';
+import Restaurant from './Components/Restaurant/Restaurant';
 
 class App extends Component {
   constructor(props){
@@ -45,7 +45,7 @@ class App extends Component {
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/profile' render={() => <Profile user={this.state.loggedInUser} getTheUser={this.getTheUser}/>}/>
           <Route exact path='/edit/:restaurantId' render={() => <Edit user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
-          <Route exact path='/restaurant/:restaurantId' render={() => <EditTables user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
+          <Route exact path='/restaurant/:restaurantId' render={(props) => <Restaurant {...props} user={this.state.loggedInUser} getUser={this.getTheUser}/>}/>
 
         </Switch>
       </div>

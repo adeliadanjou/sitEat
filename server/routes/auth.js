@@ -33,6 +33,7 @@ router.post("/login", function (req, res, next) {
 router.post("/signup", (req, res, next) => {
   
   //todo: consider using destructuring operator
+ 
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
@@ -77,6 +78,7 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       restaurant,
       email,
+      
 
     })
 
@@ -142,37 +144,20 @@ router.post('/edit', (req, res, next) => {
     zipCode,
     lat,
     lng,
+    tables,
     
   } = req.body;
   
-  if (username !== ""){
+  if ( username !== "",email !== "", restaurantName !== "",address !== "",zipCode !== "",lat !== "", lng !== ""){
     myUser.username = username; 
-  }
-
-  if (email !== ""){
-    myUser.email = email; 
-  }
-
-  if (restaurantName !== ""){
+    myUser.email = email;
     myUser.restaurantName = restaurantName; 
-  }
-
-  if (address !== ""){
     myUser.address = address; 
-  }
-
-  if (zipCode !== ""){
     myUser.zipCode = zipCode; 
-  }
-
-  if (lat !== ""){
-    myUser.lat = lat; 
-  }
-
-  if (lng !== ""){
+    myUser.lat = lat;
     myUser.lng = lng; 
+    
   }
-
 
   User.findByIdAndUpdate(req.user._id, myUser, {
       new: true
@@ -226,6 +211,5 @@ router.get('/allRestaurants', (req, res, next) => {
       console.log(error)
     })
 })
-
 
 module.exports = router;

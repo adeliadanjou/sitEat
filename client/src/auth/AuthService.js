@@ -9,6 +9,11 @@ class AuthService {
     this.service = service;
   }
 
+  createTable = (mesa, _id, name, chairs, isAvailable, pedido, status ) => {
+    return this.service.post(`/restaurant/${_id}`, {mesa, _id,name, chairs, isAvailable, pedido, status })
+    .then(response => response.data)
+  }
+  
   signup = (username, password, email, restaurant, restaurantName, address, zipCode) => {
     return this.service.post('/signup', {username, password, email, restaurant, restaurantName, address, zipCode })
     .then(response => response.data)
@@ -19,10 +24,6 @@ class AuthService {
     .then(response => response.data)
   }
 
-  editArrTables = (tables,username, email, restaurant, restaurantName, address, zipCode) => {
-    return this.service.post('/Restaurant/:id', {tables,username, email, restaurant, restaurantName, address, zipCode})
-    .then(response => response.data)
-  }
 
   loggedin = () => {
     return this.service.get('/loggedin')

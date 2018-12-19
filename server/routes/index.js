@@ -2,12 +2,12 @@ const express = require('express');
 const router  = express.Router();
 
 /* GET home page */
-router.get('/', (req, res, next) => {
+/* router.get('/', (req, res, next) => {
   res.render('index');
-});
+}); */
 
 
 router.use('/api/auth', require('./auth'));
-      
+router.use('/api/auth', require('./table'));
 
 module.exports = router;

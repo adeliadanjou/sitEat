@@ -55,8 +55,8 @@ class Signup extends Component {
   }
 
   render(){
-    if(this.state && this.state.redirect) {
-      return <Redirect to="/" />
+    if(this.state.user && this.state.redirect) {
+      return <Redirect to="/profile" />
     }
     if(this.state.restaurant === true){
      
