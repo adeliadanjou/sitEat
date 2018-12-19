@@ -55,7 +55,7 @@ export default class Layout extends Component {
           <Link className="nav-link btns btnOrange" to="/profile">Profile</Link>
         </li>
         <li className="nav-item">
-        <Link to={'/'}><button className="nav-link btns btnWhite" onClick={this.logout}>Logout</button></Link>
+        <Link to={'/'}><button className="nav-link btns btnWhite btnn" onClick={this.logout}>Logout</button></Link>
         </li>
        
       </ul>
@@ -66,15 +66,10 @@ export default class Layout extends Component {
     return (
       <div>
      <nav className="navbar navbar-expand-lg bg-warning">
-       <Link to="/"><img className="logo" alt=""/></Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" 
-      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-      aria-expanded="false" aria-label="Toggle navigation">
-   
-  </button>
+     <img className="logo" alt=""/>
      {notUser}
      {User}
-</nav>
+     </nav>
   
       </div>
     )

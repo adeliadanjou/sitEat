@@ -9,7 +9,6 @@ class Edit extends Component {
     this.state = { username: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', redirect: false};
     this.service = new AuthService();
     this.service.loggedin()
-    
   }
 
   handleFormSubmit = (event) => {

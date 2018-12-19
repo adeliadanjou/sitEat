@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 export default class restaurant extends Component {
   constructor(){
     super()
-    this.state = { mesa: '', _id: '', name: '', chairs: '', isAvailable: true, pedido: '', status: 'pending', redirect: false, array:[]};
+    this.state = { mesa: '', _id: '', name: '', chairs: '', isAvailable: true, pedido: '', status: 'pending'};
     this.service = new AuthService();
   }
 
@@ -24,6 +24,7 @@ export default class restaurant extends Component {
       console.log(response)
         let newArray = [...this.state.array];
         newArray.push(response);
+      
 
         this.setState({
             ...this.state,
@@ -33,9 +34,7 @@ export default class restaurant extends Component {
             isAvailable: false,
             pedido: this.state.pedido,
             status: this.state.status,
-            array: newArray,
 
-            redirect: true
         });
         this.props.getUser(response)
 
@@ -53,19 +52,14 @@ export default class restaurant extends Component {
     }
   }
 
-
   render() {
-    if(this.state && this.state.redirect) {
-      return <Redirect to={`/restaurant/${this._id}`} />
-    }
-
+  
     if(this.props.user){
     if(this.props.user.restaurant === false){
       console.log("no eres un restaurante")
     var userCreate = (
      
       <div>
-        
 
           <label>Mesa:</label>
           <input type="text" name="mesa" value={this.state.mesa} onChange={ e => this.handleChange(e)}/>
@@ -81,8 +75,6 @@ export default class restaurant extends Component {
 
           
           <input type="submit" value="Enviar pedido" />
-        
-
       
       </div>
     )

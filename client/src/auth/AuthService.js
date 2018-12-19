@@ -9,8 +9,8 @@ class AuthService {
     this.service = service;
   }
 
-  createTable = (mesa, _id, name, chairs, isAvailable, pedido, status ) => {
-    return this.service.post(`/restaurant/${_id}`, {mesa, _id,name, chairs, isAvailable, pedido, status })
+  createTable = (mesa, _id, name, chairs, isAvailable, pedido, status, array ) => {
+    return this.service.post(`/restaurant/${_id}`, {mesa, _id,name, chairs, isAvailable, pedido, status, array })
     .then(response => response.data)
   }
   

@@ -13,6 +13,9 @@
   text-align: center;
   text-decoration: none;
 }
+.btnn {
+  text-decoration: none !important;
+}
  .btnOrange {
    background-color:rgb(255, 124, 58);
    margin-left: 0.5em;
@@ -28,11 +31,13 @@
   background-color:rgb(255, 255, 255);
   color: black;
   margin-left: 0.5em;
+  
 }
 
 .btnWhite:hover {
   background-color:rgb(250, 234, 163);
   color: rgb(0, 0, 0);
+  
  
 }
 

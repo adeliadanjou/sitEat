@@ -55,6 +55,7 @@ class Signup extends Component {
   }
 
   render(){
+    if(this.state.user){
     if(this.state.user && this.state.redirect) {
       return <Redirect to="/profile" />
     }
@@ -77,7 +78,7 @@ class Signup extends Component {
          </div>
          ) 
      
-    }
+    }}
     return(
       <div>
 

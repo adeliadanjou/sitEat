@@ -18,6 +18,7 @@ router.post("/restaurant/:id", (req, res, next) => {
       newTable.pedido = req.body.pedido;
       newTable.isAvailable= req.body.isAvailable;
       newTable.status =req.body.status;
+
       console.log(newTable, 'Mesa Guardada')
        newTable.save()
        .then(table => {

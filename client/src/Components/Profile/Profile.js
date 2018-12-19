@@ -4,7 +4,7 @@ import AuthService from '../../auth/AuthService';
 import Map from '../Map/Map';
 import AllRestaurants from '../AllRestaurants/AllRestaurants';
 import { Redirect} from 'react-router-dom';
-import './Profile.css';
+
 
 
 export default class Profile extends Component {
@@ -32,7 +32,7 @@ export default class Profile extends Component {
     this.authService
       .loggedin()
       .then((user) => {
-      console.log("logueado!")
+     
       })
       .catch(() => this.setState({...this.state, redirect: true}))
   };

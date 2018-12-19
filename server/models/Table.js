@@ -11,7 +11,6 @@ const tableSchema = new Schema({
   isAvailable: {type: Boolean, default: false},
   pedido: String,
   status: {type: String, enum: ['pending', 'confirmed', 'done'], default: 'pending'},
-  
 }, {
   timestamps: {
     createdAt: 'created_at',
