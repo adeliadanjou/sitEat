@@ -19,6 +19,11 @@ class AuthService {
     .then(response => response.data)
   }
 
+  editArrTables = (tables,username, email, restaurant, restaurantName, address, zipCode) => {
+    return this.service.post('/Restaurant/:id', {tables,username, email, restaurant, restaurantName, address, zipCode})
+    .then(response => response.data)
+  }
+
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => response.data)

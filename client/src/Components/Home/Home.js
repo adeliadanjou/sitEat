@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { Component } from 'react'
 import AuthService from '../../auth/AuthService';
-
+import './Home.css';
  
 class Home extends Component {
   constructor(props){
@@ -13,10 +13,17 @@ class Home extends Component {
   render () {
       
     return (
-      <div>
-        <h1>Welcome Home {this.props.username}</h1>
-        <Link to={`/login/`}><button>login</button></Link>
-        <Link to={`/signup/`}><button>signup</button></Link>
+      <div className="divHome">
+        <img className="logoImage" src={require("../../sitEatLogo.png")} alt=""/>
+        <h1>¿Cansado de esperar al camarero? {this.props.username}</h1>
+        <h3>¡Nunca más!</h3>
+        <Link to={`/signup/`}><button className="btn2 btnWhite">REGÍSTRATE</button></Link>
+        <div className="alreadyUser"><p className="aBitSpace">¿Ya tienes cuenta?</p><Link to="/login">Iniciar sesión</Link></div>
+       <img className="appStore" src={require("./playStore.png")} alt=""/>
+        <div className="white">chungadas varias</div>
+
+
+       
       </div>
         
      )

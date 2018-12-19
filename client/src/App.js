@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
-import Home from "./Components/Home/Home"
+import Home from './Components/Home/Home'
 import Login from './Components/Login/Login';
-
 import Signup from './Components/Signup/Signup';
 import Profile from './Components/Profile/Profile';
 import AuthService from './auth/AuthService';
 import Edit from './Components/Edit/Edit';
+import Layout from './Layout';
 import EditTables from './Components/EditTables/EditTables';
 
 class App extends Component {
@@ -36,8 +36,9 @@ class App extends Component {
   }
     return (
       <div className="App">
-
-      
+    
+    <Layout user={this.state.loggedInUser} getTheUser={this.getTheUser} />
+    
         <Switch>
           <Route exact path='/' component={Home} getUser={this.getTheUser}/>
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>

@@ -1,9 +1,39 @@
-.App {
+/* .App {
   display: flex;
   justify-content: center;
   margin-top: 5%;
   
 
+} */
+.btns {
+  height: 2.3em;
+  width: 5em;
+  border-radius: 2em;
+  box-shadow: 2px 2px 5px rgb(206, 162, 59);
+  text-align: center;
+  text-decoration: none;
+}
+ .btnOrange {
+   background-color:rgb(255, 124, 58);
+   margin-left: 0.5em;
+   color: white;
+ }
+
+ .btnOrange:hover {
+  background-color:#E06E34; 
+  color: white;
+}
+
+ .btnWhite {
+  background-color:rgb(255, 255, 255);
+  color: black;
+  margin-left: 0.5em;
+}
+
+.btnWhite:hover {
+  background-color:rgb(250, 234, 163);
+  color: rgb(0, 0, 0);
+ 
 }
 
 .mapFather > div {
@@ -11,4 +41,30 @@ margin-top: 7%;
 height: 70% !important;
 width: 60% !important;
 
+}
+.aBitSpace{
+  margin: 0 0.5em 1em;
+}
+.logo {
+  background-image: url("sitEatLogo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 4.5em;
+  height: 3.2em;
+
+}
+ .alreadyUser {
+   display: flex;
+   flex-direction: row;
+ }
+.navbar { 
+  box-shadow: 2px 2px 5px rgb(206, 162, 59);
+};
+
+.navFont{
+  font-size: 100px;
+}
+
+.nav a{
+font-size: 1.2em !important;
 }

@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import "./EditTables.css";
 import { Link } from "react-router-dom";
+// import AuthService from '../../auth/AuthService';
 
 export default class EditTables extends Component {
   constructor(props) {
     super(props);
     this.state = { valueRow: undefined,valueCol: undefined, arrayRows: [] };
+    // this.service = new AuthService();
+    // this.service.editArrTables()
   }
 
+  
    
   //le paso el isColoRow y lo comparo con el r y el c que le puse antes:
   handleChange = (event,isColoRow) => {
@@ -36,7 +40,16 @@ export default class EditTables extends Component {
             }
         }
 
-    this.setState({...this.state, arrayRows: arrayRows})
+        this.setState({...this.state, arrayRows: arrayRows})
+
+    // this.service.editArrTables(arrayRows)
+    // .then( response => {
+    //   this.setState({...this.state, arrayRows: arrayRows})
+    //   this.props.getUser(response)
+
+    // })
+    // .catch( error => console.log(error) )
+
   }
 
   clickedOnACell = (rowIndex, colIndex)=> {
