@@ -66,7 +66,9 @@ export default class Layout extends Component {
     return (
       <div>
      <nav className="navbar navbar-expand-lg bg-warning">
-     <img className="logo" alt=""/>
+        <Link to={'/'}>
+        <img className="logo" alt=""/>
+        </Link>
      {notUser}
      {User}
      </nav>
