@@ -39,7 +39,7 @@ class Login extends Component {
       <div className="divLogin">
        <div className="formSize">
         <form className="loginForm" onSubmit={this.handleFormSubmit}>
-       <h5>LOGIN</h5>
+       <h5>LOGIN:</h5>
           <div className="form-group bitMargin">
             <label>Username:</label>
             <input
