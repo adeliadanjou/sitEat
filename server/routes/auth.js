@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
+const uploadCloud = require('../config/cloudinary.js');
+
 
 
 // Bcrypt to encrypt passwords
@@ -21,6 +23,8 @@ router.post("/login", function (req, res, next) {
         message: "No user in DB"
       });
     }
+
+    
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
@@ -30,10 +34,11 @@ router.post("/login", function (req, res, next) {
   })(req, res, next);
 });
 
-router.post("/signup", (req, res, next) => {
-  
-  //todo: consider using destructuring operator
- 
+router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
+
+  console.log(req.file.url)
+
+  const profileImg = req.file.url;
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
@@ -55,8 +60,15 @@ router.post("/signup", (req, res, next) => {
     });
     return;
   }
-
-  //todo: check password strength
+  if (password.length < 3) {
+    res
+        .status(400)
+        .json({
+            message:
+                "Password must be at least 3 characters long"
+        });
+    return;
+}
 
   User.findOne({
     username
@@ -78,13 +90,14 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       restaurant,
       email,
-      
-
+      pictureUrl:profileImg
     })
 
-    
-    if (restaurant) {
+    console.log(newUser)
 
+
+    console.log(restaurant)
+    if (restaurant == true) {
       //todo: very important! please ensure what happens if the geocoder cannot locate the provided address
       //todo: consider using https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
       googleMapsClient.geocode({
@@ -92,8 +105,7 @@ router.post("/signup", (req, res, next) => {
         })
         .asPromise()
         .then((response) => {
-          
-
+        
           //aqui consigo latitud y longitud:
           var lat = response.json.results[0].geometry.viewport.northeast.lat;
           var lng = response.json.results[0].geometry.viewport.northeast.lng;
@@ -107,7 +119,16 @@ router.post("/signup", (req, res, next) => {
 
           newUser.save()
             .then(user => {
-              res.status(200).json(user);
+              //para hacer login cuando signup
+              req.login(user, (err) => {
+
+                if (err) {
+                    res.status(500).json({ message: 'Login after signup went bad.' });
+                    return;
+                }
+      
+                res.status(200).json(user);
+            });
             })
             .catch(err => {
               res.status(400).json({
@@ -116,13 +137,21 @@ router.post("/signup", (req, res, next) => {
             });
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err+'<--------');
         });
     } else {
 
       newUser.save()
         .then(user => {
+          req.login(user, (err) => {
+
+          if (err) {
+              res.status(500).json({ message: 'Login after signup went bad.' });
+              return;
+          }
+
           res.status(200).json(user);
+      });
         })
         .catch(err => {
           res.status(400).json({

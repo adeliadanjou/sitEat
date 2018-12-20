@@ -12,10 +12,11 @@
   width: 70em;
   height: 20em;
   margin-left: 6.3em;
-  
-  
-}
 
+}
+marginLeft {
+  margin-left:1em;
+}
 .formSizeSignup{
   margin-top: 1em;
   display: flex;

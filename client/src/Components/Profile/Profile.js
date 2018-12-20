@@ -39,6 +39,7 @@ export default class Profile extends Component {
     this.authService
       .loggedin()
       .then((user) => { 
+        this.setState({...this.state, user})
       })
   };
   
@@ -75,18 +76,18 @@ export default class Profile extends Component {
     } 
     
     return (
-      this.props.user ? (<div>
+      this.state.user ? (<div>
         <h2>Hola  {username} este es tu perfil!!!!</h2>
         <br/>
   
-        <Link to={`edit/${this.props.user._id}`}><button>Edit my Profile</button></Link>
+        <Link to={`edit/${this.state.user._id}`}><button>Edit my Profile</button></Link>
        
         <Link to={'/'}><button onClick={this.delete}>Delete my Account</button></Link>
         
         {restaurantProfile}
         {userProfile}
 
-      </div>): (<p>"Loading..."</p>)
+      </div>): (<p>Loading...</p>)
       
     )
   }
