@@ -203,15 +203,6 @@ router.get("/loggedin", (req, res, next) => {
   });
 });
 
-router.get("/myRestaurant", () => {
-  res.status(200).json({
-    message: "Log out success!"
-  });
-  const {
-    username
-  } = req.body;
-})
-
 router.get('/allRestaurants', (req, res, next) => {
   User.find({restaurant: true})
     .then(restaurant => {
@@ -221,5 +212,6 @@ router.get('/allRestaurants', (req, res, next) => {
       console.log(error)
     })
 })
+
 
 module.exports = router;

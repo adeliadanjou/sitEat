@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import AuthService from '../../auth/AuthService';
 import Map from '../Map/Map';
-import AllRestaurants from '../AllRestaurants/AllRestaurants';
 import { Redirect} from 'react-router-dom';
 
 

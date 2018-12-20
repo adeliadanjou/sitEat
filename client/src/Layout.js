@@ -83,7 +83,7 @@ export default class Layout extends Component {
             >
               <ul className="nav navbar-nav ml-auto w-100 justify-content-end ">
                 <li className="nav-item">
-                  <Link to={`Restaurant/${this.props.user._id}`}>
+                  <Link to={'/myRestaurant'}>
                     <button className="btn btn-danger myRestaurantBtn">
                       My Restaurant
                     </button>
@@ -100,13 +100,22 @@ export default class Layout extends Component {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="nav navbar-nav ml-auto w-100 justify-content-end ">
+              <ul className="nav navbar-nav ml   ">
                 <li className="nav-item">
-                  <Link to={"/searchRestaurant"}>
+                  <Link className="nav-link" to={"/searchRestaurant"}>
                     <button className="btn btn-danger searchRestBtn">
                       Buscador de Restaurantes
                     </button>
                   </Link>
+
+                  <li >
+                  <Link className="nav-link" to={"/misPedidos"}>
+                    <button className="btn btn-danger searchRestBtn">
+                      Mis Pedidos
+                    </button>
+                  </Link>
+                </li>
+
                 </li>
               </ul>
             </div>

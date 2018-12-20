@@ -16,7 +16,8 @@ class Signup extends Component {
       lat: "",
       lng: "",
       messageE:"",
-      redirect: false
+      redirect: false,
+      
 
     };
     this.service = new AuthService();

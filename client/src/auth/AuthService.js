@@ -50,6 +50,16 @@ class AuthService {
     .then(response => response.data)
   }
 
+  misPedidos = () => {
+    return this.service.get('/mispedidos')
+    .then(response => response.data)
+  }
+
+  misMesas = () => {
+    return this.service.get('/myRestaurant')
+    .then(response => response.data)
+  }
+
 }
 
 export default AuthService;

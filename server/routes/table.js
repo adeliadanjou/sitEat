@@ -6,7 +6,7 @@ const Table = require("../models/Table");
 
 
 router.post("/restaurant/:id", (req, res, next) => {
-  console.log(req.body, req.params.id)
+  
   User.findById(req.params.id)
     .then(thisUser => {
 
@@ -33,5 +33,27 @@ router.post("/restaurant/:id", (req, res, next) => {
     })
     
 });
+
+router.get('/misPedidos', (req, res, next) => {
+  Table.find({user:req.user._id})
+    .then(restaurant => {
+      res.status(200).json({ restaurant });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+})
+
+router.get('/myRestaurant', (req, res, next) => {
+ 
+  Table.find({restaurant:req.user._id})
+    .then(user => {
+      res.status(200).json({ user });
+    })
+    .catch(error => {
+      console.log("ocurrió un error patrón!")
+    })
+})
+
 
 module.exports = router

@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 export default class restaurant extends Component {
   constructor(){
     super()
-    this.state = { mesa: '', _id: '', name: '', chairs: '', isAvailable: true, pedido: '', status: 'pending'};
+    this.state = { mesa: '', _id: '', name: '', chairs: '', isAvailable: true, pedido: '', status: 'pending',  redirect: false,};
     this.service = new AuthService();
   }
 
@@ -22,8 +22,8 @@ export default class restaurant extends Component {
     this.service.createTable(mesa, id, name, chairs, isAvailable, pedido, status)
     .then( response => {
       console.log(response)
-        let newArray = [...this.state.array];
-        newArray.push(response);
+        // let newArray = [...this.state.array];
+        // newArray.push(response);
       
 
         this.setState({
@@ -34,9 +34,11 @@ export default class restaurant extends Component {
             isAvailable: false,
             pedido: this.state.pedido,
             status: this.state.status,
-
-        });
-        this.props.getUser(response)
+            redirect: true
+// como hago un setState y luego quiero hacer un redirect, el setState me lo para.
+//para hacer un redirect tengo que ponerle la arrow function que ves abajo, un callback.
+        }, () => this.props.getUser(response));
+        
 
     })
     .catch( error => console.log(error),  )
@@ -46,6 +48,7 @@ export default class restaurant extends Component {
     const {name, value} = event.target;
     if(name === "restaurant"){
      this.setState({[name]: event.target.checked});
+
     }
     else{
       this.setState({[name]: value});
@@ -53,10 +56,13 @@ export default class restaurant extends Component {
   }
 
   render() {
-  
+    if(this.props && this.state.redirect){
+      return <Redirect to="/misPedidos"  />
+    } 
+
     if(this.props.user){
-    if(this.props.user.restaurant === false){
-      console.log("no eres un restaurante")
+    if(this.props.user.restaurant === false ){
+     
     var userCreate = (
      
       <div>
@@ -77,8 +83,9 @@ export default class restaurant extends Component {
           <input type="submit" value="Enviar pedido" />
       
       </div>
-    )
-    }}
+    )}
+  
+  }
     return (
       // <div>
       //   <h1>AQUI LOS RESTAURANTES PUEDEN VER LAS MESAS Y SUS PEDIDOS:</h1>

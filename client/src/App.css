@@ -4,10 +4,16 @@
 }
 
 .searchRestBtn{
-  margin-left: 2em;
+  margin-left: 1em;
  
 }
 
+
+
+li {
+  display: flex;
+  flex-direction: row;
+}
 .btns {
   height: 2.3em;
   width: 5em;

@@ -9,6 +9,8 @@ import AuthService from "./auth/AuthService";
 import Edit from "./Components/Edit/Edit";
 import Layout from "./Layout";
 import Restaurant from "./Components/Restaurant/Restaurant";
+import MisPedidos from "./Components/MisPedidos/MisPedidos";
+import MyRestaurant from "./Components/MyRestaurant/MyRestaurant";
 import AllRestaurants from "./Components/AllRestaurants/AllRestaurants";
 
 class App extends Component {
@@ -66,11 +68,36 @@ class App extends Component {
                 />
               )}
             />
+
+             <Route
+              exact
+              path="/myRestaurant"
+              render={props => (
+                <MyRestaurant
+                  {...props}
+                  user={this.state.loggedInUser}
+                  getUser={this.getTheUser}
+                />
+              )}
+            />
+
             <Route
               exact
               path="/searchRestaurant"
               render={props => (
                 <AllRestaurants
+                  {...props}
+                  user={this.state.loggedInUser}
+                  getUser={this.getTheUser}
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/misPedidos"
+              render={props => (
+                <MisPedidos
                   {...props}
                   user={this.state.loggedInUser}
                   getUser={this.getTheUser}
