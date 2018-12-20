@@ -76,22 +76,20 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Home} getUser={this.getTheUser} />
+
             <Route
-              exact
-              path="/login"
+              exact path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
             <Route
-              exact
-              path="/signup"
+              exact path="/signup"
               render={() => <Signup getUser={this.getTheUser} />}
             />
             <Route
-              exact
-              path="/login"
-              render={() => <Login getUser={this.getTheUser} />}
+              exact path="/profile"
+              render={() => <Profile getUser={this.getTheUser} />}
             />
-             <Route
+            <Route
               exact
               component={AllRestaurants}
               path="/searchRestaurant"
@@ -100,7 +98,6 @@ class App extends Component {
           </Switch>
         </div>
       )
-
 
     }
   }

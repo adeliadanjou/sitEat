@@ -60,8 +60,8 @@ class Signup extends Component {
           lng: "",
 
           redirect: true
-        });
-        this.props.getUser(response);
+        }, () => this.props.getUser(response));
+        
       })
       .catch(error => this.setState({ messageE: "Ups!! Algo ha ido mal!" }));
   };

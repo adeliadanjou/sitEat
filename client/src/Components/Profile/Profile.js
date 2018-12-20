@@ -39,10 +39,8 @@ export default class Profile extends Component {
   loggedin = () => {
     this.authService
       .loggedin()
-      .then((user) => {
-     
+      .then((user) => { 
       })
-      .catch(() => this.setState({...this.state, redirect: true}))
   };
   
   render() {
