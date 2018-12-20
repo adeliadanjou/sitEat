@@ -37,7 +37,7 @@ class Login extends Component {
     }
     return (
       <div className="divLogin">
-       <div className="formSize">
+       <div className="formSizeLogin">
         <form className="loginForm" onSubmit={this.handleFormSubmit}>
        <h5>LOGIN:</h5>
           <div className="form-group bitMargin">
@@ -63,7 +63,7 @@ class Login extends Component {
           />
             <p className="colorErr">{this.state.messageE}</p>
 
-          <input class="btn btn-warning boton" type="submit" value="Login" />
+          <input className="btn btn-warning boton" type="submit" value="Login" />
         <p>
           Don't have an account yet?
           <Link to={"/signup"}> Signup</Link>

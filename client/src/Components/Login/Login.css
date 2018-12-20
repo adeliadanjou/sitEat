@@ -1,7 +1,7 @@
 .divLogin {
   background-image: url("./wood.jpg");
   background-size: cover;
-  height: 37em;
+  height: 41.4em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,7 +22,7 @@
 label, p {
   color: rgb(207, 189, 189);
 }
-.formSize {
+.formSizeLogin {
   display: flex;
   justify-content: center;
   align-items: center;
