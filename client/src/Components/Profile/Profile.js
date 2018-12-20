@@ -45,7 +45,7 @@ export default class Profile extends Component {
   
   render() {
 
-    if( this.state.redirect) {
+    if(this.state.redirect) {
       return <Redirect to="/" />
     }
 
