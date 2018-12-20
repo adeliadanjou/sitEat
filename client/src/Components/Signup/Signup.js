@@ -86,6 +86,7 @@ class Signup extends Component {
             <label>Restaurant Name:</label>
             <input
               name="restaurantName"
+              placeholder="La Cocinona"
               className="form-control"
               value={this.state.restaurantName}
               onChange={e => this.handleChange(e)}
@@ -96,6 +97,7 @@ class Signup extends Component {
             <input
               name="address"
               className="form-control"
+              placeholder="Calle toledo 64, Madrid"
               id="pac-input"
               
               value={this.state.address}
@@ -108,7 +110,7 @@ class Signup extends Component {
               name="zipCode"
               className="form-control"
               value={this.state.zipCode}
-              placeholder="12345"
+              placeholder="28330"
               maxLength="5"
               pattern="[0-9]*"
               onChange={e => this.handleChange(e)}
@@ -130,6 +132,7 @@ class Signup extends Component {
               <input
                 type="text"
                 className="form-control"
+                placeholder="Username"
                 name="username"
                 value={this.state.username}
                 onChange={e => this.handleChange(e)}
@@ -140,6 +143,7 @@ class Signup extends Component {
               <input
                 name="password"
                 className="form-control"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={e => this.handleChange(e)}
               />
@@ -148,6 +152,7 @@ class Signup extends Component {
               <label>Email:</label>
               <input
                 name="email"
+                placeholder="piranna@sit&Eat.com"
                 className="form-control"
                 value={this.state.email}
                 onChange={e => this.handleChange(e)}
