@@ -11,7 +11,7 @@ export default class Profile extends Component {
   constructor(props){
     super(props);
 
-    this.state = { redirect: false, username: '', password: '', email: '', restaurantName: '', address: '', zipCode: '', lat: '', lng: '', user:props.user};
+    this.state = { redirect: false, user:props.user};
     this.authService = new AuthService();
   }
 
@@ -68,7 +68,7 @@ export default class Profile extends Component {
       var userProfile =(
         <div>
            AQUI VA EL PERFIL QUE SOLO PUEDEN VER LOS USUARIOS
-           <AllRestaurants/>
+          
         </div>
         ) 
       }

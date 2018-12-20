@@ -66,6 +66,17 @@ class App extends Component {
                 />
               )}
             />
+            <Route
+              exact
+              path="/searchRestaurant"
+              render={props => (
+                <AllRestaurants
+                  {...props}
+                  user={this.state.loggedInUser}
+                  getUser={this.getTheUser}
+                />
+              )}
+            />
           </Switch>
         </div>
       )
