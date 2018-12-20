@@ -133,6 +133,16 @@ router.post("/signup", (req, res, next) => {
   })
 });
 
+router.get('/delete', (req, res, next) => {
+	User.remove({ _id: req.user._id }, function(error, user) {
+		if (error) {
+			next(error);
+		} else {
+			res.redirect('/');
+		}
+	});
+});
+
 router.post('/edit', (req, res, next) => {
   const myUser ={};
 

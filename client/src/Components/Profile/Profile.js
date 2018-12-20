@@ -28,6 +28,14 @@ export default class Profile extends Component {
       this.props.getTheUser(null)})
   };
 
+  delete = () => {
+    this.authService
+      .delete()
+      .then(() => {
+      
+      this.props.getTheUser(null)})
+  };
+
   loggedin = () => {
     this.authService
       .loggedin()
@@ -77,7 +85,7 @@ export default class Profile extends Component {
   
         <Link to={`edit/${this.props.user._id}`}><button>Edit my Profile</button></Link>
        
-        <Link to={'/'}><button onClick={this.logout}>Log Out</button></Link>
+        <Link to={'/'}><button onClick={this.delete}>Delete my Account</button></Link>
         
         {restaurantProfile}
         {userProfile}

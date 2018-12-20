@@ -24,7 +24,6 @@ class AuthService {
     .then(response => response.data)
   }
 
-
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => response.data)
@@ -39,6 +38,12 @@ class AuthService {
     return this.service.get('/logout')
     .then(response => response.data)
   }
+
+  delete = () => {
+    return this.service.get('/delete')
+    .then(response => response.data)
+  }
+
 // me hago el servicio de todos los restaurantes con su ruta modo react para llamarla luego en componente
   allRestaurants = () => {
     return this.service.get('/allRestaurants', {})
