@@ -15,7 +15,9 @@ class Signup extends Component {
       zipCode: "",
       lat: "",
       lng: "",
+      messageE:"",
       redirect: false
+
     };
     this.service = new AuthService();
   }
@@ -32,8 +34,7 @@ class Signup extends Component {
     const lat = this.state.lat;
     const lng = this.state.lng;
 
-    this.service
-      .signup(
+    this.service.signup(
         username,
         password,
         email,
@@ -45,7 +46,6 @@ class Signup extends Component {
         lng
       )
       .then(response => {
-        debugger;
 
         this.setState({
           ...this.state,
@@ -63,7 +63,7 @@ class Signup extends Component {
         });
         this.props.getUser(response);
       })
-      .catch(error => console.log(error));
+      .catch(error => this.setState({ messageE: "Ups!! Algo ha ido mal!" }));
   };
 
   handleChange = event => {
@@ -75,10 +75,11 @@ class Signup extends Component {
     }
   };
 
-  render() {
-    if (this.state.user && this.state.redirect) {
-      return <Redirect to="/profile" />;
+  render(){
+    if(this.props && this.state.redirect){
+      return <Redirect to="/profile"  />
     }
+
     if (this.state.restaurant === true) {
       var justForRestaurants = (
         <div className="form-row">
@@ -172,6 +173,7 @@ class Signup extends Component {
             </div>
 
             <input className="btn btn-warning boton" type="submit" value="Signup" />
+            <p className="colorErr">{this.state.messageE}</p>
         <p>
           Already have account?
           <Link to={"/login"}> Login</Link>

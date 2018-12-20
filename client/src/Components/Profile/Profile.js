@@ -34,7 +34,7 @@ export default class Profile extends Component {
       .then(() => {
       
       this.props.getTheUser(null)})
-  };
+  }
 
   loggedin = () => {
     this.authService
@@ -59,8 +59,7 @@ export default class Profile extends Component {
       var restaurantProfile =(
       <div>
          AQUI VA EL PERFIL QUE SOLO PUEDEN VER LOS RESTAURANTES
-         <br/>
-         <Link to={`Restaurant/${this.props.user._id}`}><button>My Restaurant</button></Link>
+         
         
          {<Map lat={this.props.user.lat} lng={this.props.user.lng}/>}
       </div>
