@@ -11,9 +11,7 @@ const userSchema = new Schema({
   address: String,         
   zipCode: Number,
   lat: String,
-  lng: String,  
-  pictureUrl: String
-         
+  lng: String,         
 }, {
   timestamps: {
     createdAt: 'created_at',

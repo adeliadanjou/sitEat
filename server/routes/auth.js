@@ -2,8 +2,6 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
-const uploadCloud = require('../config/cloudinary.js');
-
 
 
 // Bcrypt to encrypt passwords
@@ -23,8 +21,6 @@ router.post("/login", function (req, res, next) {
         message: "No user in DB"
       });
     }
-
-    
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
@@ -34,11 +30,10 @@ router.post("/login", function (req, res, next) {
   })(req, res, next);
 });
 
-router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
-
-  console.log(req.file.url)
-
-  const profileImg = req.file.url;
+router.post("/signup", (req, res, next) => {
+  
+  //todo: consider using destructuring operator
+ 
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
@@ -46,7 +41,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const restaurantName = req.body.restaurantName;
   const address = req.body.address;
   const zipCode = req.body.zipCode;
-  // const tables = [];
+  const tables = [];
 
   const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyBp_NABj80aoBJsjKpHT6q7I1c9lLYB3gk',
@@ -60,15 +55,8 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     });
     return;
   }
-  if (password.length < 3) {
-    res
-        .status(400)
-        .json({
-            message:
-                "Password must be at least 3 characters long"
-        });
-    return;
-}
+
+  //todo: check password strength
 
   User.findOne({
     username
@@ -90,14 +78,13 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
       password: hashPass,
       restaurant,
       email,
-      pictureUrl:profileImg
+      
+
     })
 
-    console.log(newUser)
+    
+    if (restaurant) {
 
-
-    console.log(restaurant)
-    if (restaurant == true) {
       //todo: very important! please ensure what happens if the geocoder cannot locate the provided address
       //todo: consider using https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
       googleMapsClient.geocode({
@@ -105,7 +92,8 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
         })
         .asPromise()
         .then((response) => {
-        
+          
+
           //aqui consigo latitud y longitud:
           var lat = response.json.results[0].geometry.viewport.northeast.lat;
           var lng = response.json.results[0].geometry.viewport.northeast.lng;
@@ -115,20 +103,11 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
           newUser.zipCode = zipCode;
           newUser.lat = lat;
           newUser.lng = lng;
-          // newUser.tables = tables;
+          newUser.tables = tables;
 
           newUser.save()
             .then(user => {
-              //para hacer login cuando signup
-              req.login(user, (err) => {
-
-                if (err) {
-                    res.status(500).json({ message: 'Login after signup went bad.' });
-                    return;
-                }
-      
-                res.status(200).json(user);
-            });
+              res.status(200).json(user);
             })
             .catch(err => {
               res.status(400).json({
@@ -137,21 +116,13 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
             });
         })
         .catch((err) => {
-          console.log(err+'<--------');
+          console.log(err);
         });
     } else {
 
       newUser.save()
         .then(user => {
-          req.login(user, (err) => {
-
-          if (err) {
-              res.status(500).json({ message: 'Login after signup went bad.' });
-              return;
-          }
-
           res.status(200).json(user);
-      });
         })
         .catch(err => {
           res.status(400).json({

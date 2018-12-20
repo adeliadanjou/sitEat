@@ -15,10 +15,10 @@ class Signup extends Component {
       zipCode: "",
       lat: "",
       lng: "",
-      photo: "",
-      restaurant:false,
       messageE:"",
       redirect: false,
+      
+
     };
     this.service = new AuthService();
   }
@@ -34,9 +34,6 @@ class Signup extends Component {
     const zipCode = this.state.zipCode;
     const lat = this.state.lat;
     const lng = this.state.lng;
-    const photo = this.state.photo;
-
-    console.log(photo)
 
     this.service.signup(
         username,
@@ -47,8 +44,7 @@ class Signup extends Component {
         address,
         zipCode,
         lat,
-        lng,
-        photo
+        lng
       )
       .then(response => {
 
@@ -63,7 +59,6 @@ class Signup extends Component {
           zipCode: "",
           lat: "",
           lng: "",
-          photo: "",
 
           redirect: true
         }, () => this.props.getUser(response));
@@ -74,16 +69,12 @@ class Signup extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-
-    if (name === "photo") {
-      this.setState({ ...this.state, photo: event.target.files[0] }, () => console.log(this.state))
-    }  
-     else if (name === "restaurant") {
+    if (name === "restaurant") {
       this.setState({ [name]: event.target.checked });
     } else {
       this.setState({ [name]: value });
-    }}
-  
+    }
+  };
 
   render(){
     if(this.props && this.state.redirect){
@@ -159,8 +150,7 @@ class Signup extends Component {
                 onChange={e => this.handleChange(e)}
               />
             </div>
-
-            <div className="form-group col-md-6 ">
+            <div className="form-group col-md-7 ">
               <label>Email:</label>
               <input
                 name="email"
@@ -170,14 +160,6 @@ class Signup extends Component {
                 onChange={e => this.handleChange(e)}
               />
             </div>
-
-            <div className="form-group col-md-4 marginLeft">
-              <label>Upload photo:</label>
-              <input className="form-control" type="file" name="photo" onChange={e => this.handleChange(e)}
-              />
-            </div>
-
-
             {justForRestaurants}
             </div>
             <div className="form-check">

@@ -14,25 +14,10 @@ class AuthService {
     .then(response => response.data)
   }
   
-  signup = (username, password, email, restaurant, restaurantName, address, zipCode,lat,lng, photo) => {
-    const formData = new FormData();
-    let user = { username, password, email, restaurant, restaurantName, address, zipCode,lat,lng, photo};
-    console.log(user)
-    Object.keys(user).forEach(key => formData.append(key, user[key]));
-
-    return this.service.post('/signup', formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    })
-      .then((response) => {
-        console.log('ok!!');
-      })
-      .catch((err) => {
-        console.log('oh oh! Ha entrado por el catch!');
-      })
+  signup = (username, password, email, restaurant, restaurantName, address, zipCode) => {
+    return this.service.post('/signup', {username, password, email, restaurant, restaurantName, address, zipCode })
+    .then(response => response.data)
   }
-
 
   edit = (username, email, restaurant, restaurantName, address, zipCode) => {
     return this.service.post('/edit', {username, email, restaurant, restaurantName, address, zipCode })

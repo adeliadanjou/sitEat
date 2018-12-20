@@ -39,13 +39,12 @@ export default class Profile extends Component {
     this.authService
       .loggedin()
       .then((user) => { 
-        this.setState({...this.state, user})
       })
   };
   
   render() {
 
-    if(this.state.redirect) {
+    if( this.state.redirect) {
       return <Redirect to="/" />
     }
 
@@ -76,18 +75,18 @@ export default class Profile extends Component {
     } 
     
     return (
-      this.state.user ? (<div>
+      this.props.user ? (<div>
         <h2>Hola  {username} este es tu perfil!!!!</h2>
         <br/>
   
-        <Link to={`edit/${this.state.user._id}`}><button>Edit my Profile</button></Link>
+        <Link to={`edit/${this.props.user._id}`}><button>Edit my Profile</button></Link>
        
         <Link to={'/'}><button onClick={this.delete}>Delete my Account</button></Link>
         
         {restaurantProfile}
         {userProfile}
 
-      </div>): (<p>Loading...</p>)
+      </div>): (<p>"Loading..."</p>)
       
     )
   }
