@@ -51,7 +51,7 @@ class AuthService {
   }
 
   misPedidos = () => {
-    return this.service.get('/mispedidos')
+    return this.service.get('/misPedidos')
     .then(response => response.data)
   }
 
