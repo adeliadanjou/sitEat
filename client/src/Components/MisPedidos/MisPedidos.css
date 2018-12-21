@@ -11,14 +11,22 @@
   padding: 27px;
   background-color: rgba(133, 19, 34, 0.9);
   border-radius: 2em;
+  box-shadow: -7px 0px 17px 4px rgba(0,0,0,0.75);
+
 }
 .row {
-  padding: 3em;
+  margin: 0 6em;
+}
+
+.cargando {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .linkNone {
  text-decoration: none;
- color: white !important;
+ color: rgb(238, 189, 110) !important;
 }
 .searchImg {
   display: flex;   

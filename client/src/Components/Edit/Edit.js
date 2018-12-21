@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../../auth/AuthService';
 import { Redirect } from 'react-router-dom'; 
-
+import "./Edit.css";
 
 class Edit extends Component {
   constructor(){
@@ -79,22 +79,25 @@ class Edit extends Component {
     }}
 
     return(
-      <div>
+      <div className="divEditId">
+      <div className="formSizeEditId">
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="editIdForm" onSubmit={this.handleFormSubmit}>
+        <h5>EDIT PROFILE:</h5>
+          <div className="form-group bitMargin"></div>
           <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          <input className="form-control" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
           <label>Email:</label>
-          <input name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
+          <input className="form-control" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
   
         {justForRestaurants}
       
-          <input type="submit" value="Edit" />
+          <input className="btn btn-warning boton" type="submit" value="Edit" />
         </form>
   
       
-  
+        </div>
       </div>
     )
   }

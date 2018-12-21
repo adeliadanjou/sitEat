@@ -11,6 +11,9 @@ export default class MisPedidos extends Component {
     this.authService = new AuthService();
   }
 
+  alertFunction(e){
+    alert("¡Camarero avisado!")
+  }
   componentDidMount() {
     this.authService.misPedidos().then(misPedidosHere => {
       this.setState({ ...this.state, misPedidosHere });
@@ -35,15 +38,17 @@ export default class MisPedidos extends Component {
     <h6>{pedido.chairs} Personas</h6>
     <p>{pedido.pedido}</p>
     <div>
-    <Link className="linkNone" to={`Restaurant/${pedido.restaurant}`} className="card-link">Nuevo Pedido</Link>
-    <Link className="linkNone" to="#" className="card-link">Pedir la cuenta</Link>
+    <Link className="linkNone card-link" to={`Restaurant/${pedido.restaurant}`} >Nuevo Pedido</Link>
+    <Link onClick={e => this.alertFunction(e)} className="linkNone card-link" to="#" >Pedir la cuenta</Link>
     </div>
     </div>
   
 
 </div>
 
- )}) : (<div>"Estamos cargando tus pedidos"</div>)
+ )}) : (<div>
+   <img className="cargando" src={require("./foodLoading.gif")} alt=""/>
+   <p>Estamos cargando tus pedidos</p></div>)
 } 
 
       </div>
