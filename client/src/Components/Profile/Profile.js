@@ -54,7 +54,6 @@ export default class Profile extends Component {
     if(this.props.user.restaurant === true){
       var restaurantProfile =(
       <div>
-        
          {<Map lat={this.props.user.lat} lng={this.props.user.lng}/>}
       </div>
       ) 
@@ -64,7 +63,10 @@ export default class Profile extends Component {
     } 
     
     return (
-      this.props.user ? (<div className="myProfile">
+      this.props.user ? (
+        
+        <div className="sectionsProfile">
+        <div className="myProfile">
       <div className="perfilH">
       <h1 className="perfilDe per">PERFIL: </h1>
       <h4 className="perfilDe">¡Bienvenido de nuevo {username}!</h4>
@@ -77,11 +79,12 @@ export default class Profile extends Component {
        
         <Link  to={'/'}><button className="btn btn-danger btSize" onClick={this.delete}>Delete my Account</button></Link>
       </div>
-        
-        
+      </div>
+        <section className="mapa">
         {restaurantProfile}
 
-      </div>): (<p>"Loading..."</p>)
+        </section>
+        </div>): (<p>"Loading..."</p>)
       
     )
   }

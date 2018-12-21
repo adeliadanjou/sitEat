@@ -26,11 +26,11 @@
 }
 
 
-
 .btSize {
   height: 3em;
   width: 10em;
-  font-size: 1.2em !important
+  font-size: 1.2em !important;
+  margin-bottom: 2em;
 }
 
 .linksProfile {
