@@ -64,16 +64,25 @@ class Edit extends Component {
     if(this.props.user){
     if(this.props.user.restaurant === true){
          var justForRestaurants =(
-         <div>
+         <div className="form-row">
+
+          <div className="form-group col-md-6">
           <label>Restaurant Name:</label>
-          <input name="restaurantName" value={this.state.restaurantName} onChange={ e => this.handleChange(e)} />
+          <input placeholder="La Cocinona" className="form-control" name="restaurantName" value={this.state.restaurantName} onChange={ e => this.handleChange(e)} />
+          </div>
 
+
+          <div className="form-group col-md-8">
           <label>Address:</label>
-          <input name="address" value={this.state.address} onChange={ e => this.handleChange(e)} />
+          <input placeholder="Calle atocha 20, madrid" className="form-control" name="address" value={this.state.address} onChange={ e => this.handleChange(e)} />
+          </div>
 
+
+          <div className="form-group col-md-3 marginLeft">
           <label>Zip Code:</label>
-          <input name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
-         
+          <input  placeholder="25600" className="form-control" name="zipCode" value={this.state.zipCode} onChange={ e => this.handleChange(e)} />
+          </div>
+
          </div>
          ) 
     }}
@@ -84,19 +93,25 @@ class Edit extends Component {
 
         <form className="editIdForm" onSubmit={this.handleFormSubmit}>
         <h5>EDIT PROFILE:</h5>
-          <div className="form-group bitMargin"></div>
-          <label>Username:</label>
-          <input className="form-control margin" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
+        <div className="form-row">
+          <div className="form-group col-md-5 bitMargin">
+          <label>Username:</label>
+          <input placeholder="25600" className="form-control margin" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          </div>
+
+          <div className="form-group col-md-6 bitMargin">
           <label>Email:</label>
-          <input className="form-control margin" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
-  
+          <input placeholder="Miau@gmail.com" className="form-control margin" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
+          </div>
+
         {justForRestaurants}
-      
-          <input className="btn btn-warning boton" type="submit" value="Edit" />
+        <div className="form-group col-md-7 bitMargin">
+          <input className="btn btn-warning boton11 " type="submit" value="Edit" />
+          </div>
+        </div>
         </form>
   
-      
         </div>
       </div>
     )

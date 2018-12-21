@@ -106,7 +106,7 @@ class Signup extends Component {
               onChange={e => this.handleChange(e)}
             />
           </div>
-          <div className="form-group col-md-2 marginLeft ">
+          <div className="form-group col-md-2 marginLeft">
             <label>Zip Code:</label>
             <input
               name="zipCode"
