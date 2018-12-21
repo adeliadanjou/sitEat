@@ -16,8 +16,8 @@ class Home extends Component {
         <div>
            <section className="divHome">
         <img className="logoImage" src={require("../../sitEatLogo.png")} alt=""/>
-        <h1 className="separate">¿Cansado de esperar al camarero? {this.props.username}</h1>
-        <h3>¡Nunca más!</h3>
+        <h1 className="colorBack separate">¿Cansado de esperar al camarero? {this.props.username}</h1>
+        <h3 className="colorBack">¡Nunca más!</h3>
         <Link to={`/signup/`}><button className="btn2 btnWhite">REGÍSTRATE</button></Link>
         <div className="alreadyUser"><p className="aBitSpace">¿Ya tienes cuenta?</p><Link className="login" to="/login">Iniciar sesión</Link></div>
        <img className="appStore" src={require("./playStore.png")} alt=""/>

@@ -1,0 +1,13 @@
+.searchImg {
+    display: flex;   
+    background-image: url("./food1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 42em;
+    flex-direction: column;
+    
+    padding-top: 3.5em;
+  
+    color: rgb(20, 8, 1) ;
+   
+  }

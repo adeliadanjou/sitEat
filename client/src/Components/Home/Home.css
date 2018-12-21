@@ -33,7 +33,7 @@
   height: 3em;
 }
 
-h1, h3 {
+.colorBack {
  border-radius: 8em;
  background-color:rgba(240, 104, 0, 0.6);
 }

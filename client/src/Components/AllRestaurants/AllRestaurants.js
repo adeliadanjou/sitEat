@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "../../auth/AuthService";
 import { Link } from "react-router-dom";
+import './AllRestaurants.css';
 
 export default class AllRestaurants extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class AllRestaurants extends Component {
 
       var RestaurantName = filteredRestaurants.map(restaurant => {
         return (
-          <Link to={`Restaurant/${restaurant._id}`}>
+          <Link className="restaurantsLinks"to={`Restaurant/${restaurant._id}`}>
             <div>
               <ul>
                 <li>{restaurant.restaurantName}</li>
@@ -47,17 +48,23 @@ export default class AllRestaurants extends Component {
     }
 
     return (
-      <div>
-        <h1>LISTA DE RESTAURANTES</h1>
+      <div >
+        <h4 className="restList">
+        <img src={require("./lupa.png")}  width="33px" alt=""/>
         <input
           id="restaurantSearchBar"
           type="text"
-          placeholder="Search"
+          placeholder="Search..."
           onChange={this.updateSearch.bind(this)}
           value={this.state.search}
-        />
+        /></h4>
 
+        <div className="searchDiv">
+        <div className="linksPad">
         {RestaurantName}
+        </div>
+        
+        </div>
       </div>
     );
   }

@@ -12,6 +12,7 @@ import Restaurant from "./Components/Restaurant/Restaurant";
 import MisPedidos from "./Components/MisPedidos/MisPedidos";
 import MyRestaurant from "./Components/MyRestaurant/MyRestaurant";
 import AllRestaurants from "./Components/AllRestaurants/AllRestaurants";
+import SearchRestaurant from "./Components/SearchRestaurant/SearchRestaurant";
 
 class App extends Component {
   constructor(props) {
@@ -80,18 +81,8 @@ class App extends Component {
                 />
               )}
             />
-
-            <Route
-              exact
-              path="/searchRestaurant"
-              render={props => (
-                <AllRestaurants
-                  {...props}
-                  user={this.state.loggedInUser}
-                  getUser={this.getTheUser}
-                />
-              )}
-            />
+            <Route exact path="/searchRestaurant" component={SearchRestaurant} getUser={this.getTheUser} />
+          
 
             <Route
               exact
