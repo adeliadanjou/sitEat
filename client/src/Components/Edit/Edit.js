@@ -86,10 +86,10 @@ class Edit extends Component {
         <h5>EDIT PROFILE:</h5>
           <div className="form-group bitMargin"></div>
           <label>Username:</label>
-          <input className="form-control" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          <input className="form-control margin" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
           <label>Email:</label>
-          <input className="form-control" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
+          <input className="form-control margin" name="email" value={this.state.email} onChange={ e => this.handleChange(e)} />
   
         {justForRestaurants}
       

@@ -15,7 +15,9 @@
 
 }
 .row {
-  margin: 0 6em;
+  margin: 1em 6em;
+  display: flex;
+  flex-direction: row;
 }
 
 .cargando {
@@ -51,6 +53,10 @@
   text-decoration: underline;
   margin-bottom: 0.6em;
   padding-left: 2em;
+}
+
+.margin {
+  margin-bottom: 2em;
 }
 
 
