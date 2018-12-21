@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import AuthService from "../../auth/AuthService";
+import { Link } from "react-router-dom";
+import './MisPedidos.css';
+
 
 export default class MisPedidos extends Component {
   constructor(props) {
@@ -17,24 +20,31 @@ export default class MisPedidos extends Component {
   render() {
     console.log(this.state.misPedidosHere)
     return (
-      <div>
-        TODOS MIS PEDIDOS LOS TENGO AQUI:
+      <div className="searchImg">
+        <h1 className="perfilDe per">MIS PEDIDOS:</h1>
 
 
 { this.state.misPedidosHere ? this.state.misPedidosHere.restaurant.map((pedido, index) => {
   console.log(pedido)
   return (
 
-    //esto hay que hacerlo bien, pero solo es pintar!!
-   <div key={pedido._id}>
-     <img style={{width: '10%'}} src={pedido.name} alt=""/>
-     
-     <h3>{pedido.chairs}</h3>
-     <h4>{pedido.pedido}</h4>
-   </div>
- )}) : ''
+    <div className="row">
+   <div  className="cardDiv" key={pedido._id}>
+    <h1>Mesa: {pedido.mesa}</h1>
+    <h6> Nombre: {pedido.name}</h6>
+    <h6>{pedido.chairs} Personas</h6>
+    <p>{pedido.pedido}</p>
+    <div>
+    <Link className="linkNone" to={`Restaurant/${pedido.restaurant}`} className="card-link">Nuevo Pedido</Link>
+    <Link className="linkNone" to="#" className="card-link">Pedir la cuenta</Link>
+    </div>
+    </div>
+  
+
+</div>
+
+ )}) : (<div>"Estamos cargando tus pedidos"</div>)
 } 
-      
 
       </div>
     )

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AuthService from '../../auth/AuthService';
 import Map from '../Map/Map';
 import { Redirect} from 'react-router-dom';
-
+import './Profile.css';
 
 
 export default class Profile extends Component {
@@ -17,7 +17,6 @@ export default class Profile extends Component {
   componentDidMount = () => {
     this.loggedin()
   }
-  
 
   logout = () => {
     this.authService
@@ -55,36 +54,32 @@ export default class Profile extends Component {
     if(this.props.user.restaurant === true){
       var restaurantProfile =(
       <div>
-         AQUI VA EL PERFIL QUE SOLO PUEDEN VER LOS RESTAURANTES
-         
         
          {<Map lat={this.props.user.lat} lng={this.props.user.lng}/>}
       </div>
       ) 
     }
-    else {
-      
-      var userProfile =(
-        <div>
-           AQUI VA EL PERFIL QUE SOLO PUEDEN VER LOS USUARIOS
-          
-        </div>
-        ) 
-      }
+  
       
     } 
     
     return (
-      this.props.user ? (<div>
-        <h2>Hola  {username} este es tu perfil!!!!</h2>
-        <br/>
-  
-        <Link to={`edit/${this.props.user._id}`}><button>Edit my Profile</button></Link>
+      this.props.user ? (<div className="myProfile">
+      <div className="perfilH">
+      <h1 className="perfilDe per">PERFIL: </h1>
+      <h4 className="perfilDe">¡Bienvenido de nuevo {username}!</h4>
+      </div>
+        
+        <br/><br/>
+      <div className="linksProfile">
+      <Link  to={`edit/${this.props.user._id}`}><button className="margin btSize btn btn-light"
+         >Edit my Profile</button></Link>
        
-        <Link to={'/'}><button onClick={this.delete}>Delete my Account</button></Link>
+        <Link  to={'/'}><button className="btn btn-danger btSize" onClick={this.delete}>Delete my Account</button></Link>
+      </div>
+        
         
         {restaurantProfile}
-        {userProfile}
 
       </div>): (<p>"Loading..."</p>)
       

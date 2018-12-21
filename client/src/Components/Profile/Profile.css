@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC');
+
+.myProfile {
+  background-image: url("./fondo-gourmet.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -30em 0px;
+  height: 41em;
+  
+}
+
+.perfilH {
+  padding: 2em 0 0 2em;
+}
+
+.perfilDe {
+  color: white;
+  font-family: Noto Sans SC;
+}
+
+.per {
+  font-weight: bold;
+  font-size: 3em;
+  text-decoration: underline;
+  margin-bottom: 0.6em;
+}
+
+.margin {
+  margin-right: 1em;
+
+}
+
+.btSize {
+  height: 3em;
+  width: 10em;
+  font-size: 1.2em !important
+}
+
+.linksProfile {
+  padding: 10em 0 0 2em;
+}

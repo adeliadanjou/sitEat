@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC');
+
+.cardDiv {
+  
+  width: 18em;
+  height: 12em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 27px;
+  background-color: rgba(133, 19, 34, 0.9);
+  border-radius: 2em;
+}
+.row {
+  padding: 3em;
+}
+
+.linkNone {
+ text-decoration: none;
+ color: white !important;
+}
+.searchImg {
+  display: flex;   
+  background-image: url("../SearchRestaurant/food1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 42em;
+  flex-direction: column;
+  padding-top: 3.3em;
+  color: rgb(20, 8, 1) ;
+ 
+}
+
+.perfilDe {
+  color: white;
+  font-family: Noto Sans SC;
+}
+
+.per {
+  font-weight: bold;
+  font-size: 3em;
+  text-decoration: underline;
+  margin-bottom: 0.6em;
+  padding-left: 2em;
+}
+
+

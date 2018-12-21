@@ -13,11 +13,11 @@ router.post("/restaurant/:id", (req, res, next) => {
       newTable = new Table();
       newTable.user = req.user._id;
       newTable.restaurant = thisUser._id;
+      newTable.mesa = req.body.mesa;
       newTable.name = req.body.name;
       newTable.chairs= req.body.chairs;
       newTable.pedido = req.body.pedido;
-      newTable.isAvailable= req.body.isAvailable;
-      newTable.status =req.body.status;
+      
 
       console.log(newTable, 'Mesa Guardada')
        newTable.save()

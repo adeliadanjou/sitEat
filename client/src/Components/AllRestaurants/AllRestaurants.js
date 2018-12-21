@@ -51,7 +51,8 @@ export default class AllRestaurants extends Component {
       <div >
         <h4 className="restList">
         <img src={require("./lupa.png")}  width="33px" alt=""/>
-        <input
+        <input 
+          autocomplete="off"
           id="restaurantSearchBar"
           type="text"
           placeholder="Search..."

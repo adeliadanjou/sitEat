@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AuthService from '../../auth/AuthService';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import './Restaurant.css';
 
 export default class restaurant extends Component {
   constructor(){
@@ -65,37 +66,38 @@ export default class restaurant extends Component {
      
     var userCreate = (
      
-      <div>
-
+      <div className="divRestaurant">
+      <div className="formSizeSignup">
+       <form className="signupForm">
+       <h5>HAZ TU PEDIDO:</h5>
+        <div className="form-row">
+        <div className="form-group col-md-5 bitMargin">
           <label>Mesa:</label>
-          <input type="text" name="mesa" value={this.state.mesa} onChange={ e => this.handleChange(e)}/>
-          
+          <input className="form-control " type="text" name="mesa" value={this.state.mesa} onChange={ e => this.handleChange(e)}/>
+          </div>
+          <div className="form-group col-md-5 bitMargin marginLeft1">
           <label>Nombre:</label>
-          <input type="text" name="name" value={this.state.name}  onChange={ e => this.handleChange(e)} />
-
+          <input className="form-control " type="text" name="name" value={this.state.name}  onChange={ e => this.handleChange(e)} />
+          </div>
+          <div className="form-group col-md-5 bitMargin">
           <label>Número de personas:</label>
-          <input name="chairs" value={this.state.chairs}  onChange={ e => this.handleChange(e)} />
-          
+          <input className="form-control" name="chairs" value={this.state.chairs}  onChange={ e => this.handleChange(e)} />
+          </div>
+          <div className="form-group col-md-5 bitMargin marginLeft1">
           <label>Pedido:</label>
-          <input name="pedido" value={this.state.pedido} onChange={ e => this.handleChange(e)} />
-
+          <input className="form-control " name="pedido" value={this.state.pedido} onChange={ e => this.handleChange(e)} />
+          </div>
           
-          <input type="submit" value="Enviar pedido" />
-      
+          <input className="btn btn-warning boton" type="submit" value="Enviar pedido" />
+          </div>
+          </form>
+          </div>
       </div>
     )}
   
   }
     return (
-      // <div>
-      //   <h1>AQUI LOS RESTAURANTES PUEDEN VER LAS MESAS Y SUS PEDIDOS:</h1>
-
-      //   <h2>AQUI LOS USUARIOS PUEDEN HACER UN FORMULARIO CON SU PEDIDO Y VER LA CARTA</h2>
-      //   <form onSubmit={this.handleFormSubmit}>
-      //   {userCreate}
-      //   <input type="submit" value="Signup" />
-      //   </form>
-      // </div>
+    
       <div>
       <form onSubmit={this.handleFormSubmit}>
       {userCreate}

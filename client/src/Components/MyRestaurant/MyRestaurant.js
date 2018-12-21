@@ -18,7 +18,7 @@ export default class MyRestaurant extends Component {
     console.log(this.state.misMesasHere);
     return (
       <div>
-        conectad, ahora a ver si llegan las mesas!
+        
         {this.state.misMesasHere
           ? this.state.misMesasHere.user.map((pedido, index) => {
               console.log(pedido);
