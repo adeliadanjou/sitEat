@@ -67,8 +67,8 @@ export default class restaurant extends Component {
     var userCreate = (
      
       <div className="divRestaurant">
-      <div className="formSizeSignup">
-       <form className="signupForm">
+      <div className="formSizeRest">
+       <form className="RestaurantForm">
        <h5>HAZ TU PEDIDO:</h5>
         <div className="form-row">
         <div className="form-group col-md-5 bitMargin">

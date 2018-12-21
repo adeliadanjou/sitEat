@@ -1,5 +1,5 @@
 .divRestaurant {
-  background-image: url("../Profile/fondo-gourmet.jpg");
+  background-image: url("./comida3.jpg");
   background-size: cover;
   height: 41.4em;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 
-.signupForm{
+.RestaurantForm{
   margin-top: 3em;
   width: 40em;
   height: 20em;
@@ -15,11 +15,11 @@
   
 }
 
-.formSizeSignup{
-  margin-top: 5em;
+.formSizeRest{
+  margin-top: 5.4em;
   display: flex;
   justify-content: center;
-  height: 30em;
+  height: 30.5em;
   border-radius: 20px;
   
   background-color: rgba(0, 0, 0, 0.5);
