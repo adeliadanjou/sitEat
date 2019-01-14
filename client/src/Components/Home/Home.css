@@ -16,12 +16,7 @@
   color: black;
 }
 
-.logoImg{
-  margin-top: 2em;
-  width: 13em;
-  height: 9.5em;
- 
-}
+
 .btn2 {
   text-decoration: none;
   font-size: 1.2em;
@@ -34,7 +29,7 @@
 }
 
 .appStore {
-  width: 20em;
+  width: 10em;
   height: 3.2em;
 }
 
@@ -53,3 +48,10 @@
 }
 
 
+.sideBotoms {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  width: 350px;
+
+}
