@@ -64,9 +64,13 @@ width: 60% !important;
   background-size: cover;
   background-repeat: no-repeat;
   width: 5em;
-  height: 3.6em;
+  height: 3.8em;
 
 }
+
+.navbar {max-height:3.7rem !important}; 
+
+
  .alreadyUser {
    display: flex;
    flex-direction: row;
