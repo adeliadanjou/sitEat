@@ -60,11 +60,11 @@ width: 60% !important;
   margin: 0 0.5em 1em;
 }
 .logo {
-  background-image: url("sitEatLogo.png");
-  background-size: contain;
+  background-image: url("./images/sitEatLogo.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  width: 4.5em;
-  height: 3.2em;
+  width: 5em;
+  height: 3.6em;
 
 }
  .alreadyUser {

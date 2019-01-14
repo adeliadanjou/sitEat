@@ -15,7 +15,6 @@ export default class Layout extends Component {
 
   logout = () => {
     this.authService.logout().then(() => {
-      // this.setState({ redirect: true});
       this.props.getTheUser(null);
     });
   };
@@ -128,8 +127,7 @@ export default class Layout extends Component {
       return (
         <div>
           <nav className="navbar navbar-expand-lg bg-warning">
-            <Link to={"/"}>
-              <img className="logo" alt="" />
+            <Link className="logo" to={"/"}>
             </Link>
             {searchRestaurants}
             {myrestaurant}
